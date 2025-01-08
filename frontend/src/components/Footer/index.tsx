@@ -34,6 +34,9 @@ function Footer() {
             </Form>
           </Formik>
         </div>
+        <div>
+          <p>&copy; 2025 - Manassés Ndombele - Dev Freelancer</p>
+        </div>
       </div>
     </footer>
   );

@@ -7,9 +7,10 @@ function ReserveForm() {
     <Formik
       initialValues={{
         clientName: "",
-        phoneNumber: 0,
+        phoneNumber: 9,
         hotelCountry: "Selecione o hotel",
         dateTime: "",
+        stayTime: 1,
         message: "",
       }}
       onSubmit={(values, { setSubmitting, resetForm }) => {
@@ -49,6 +50,14 @@ function ReserveForm() {
             "Suíca - Berna",
             "Turquia - Istambul",
           ]}
+        />
+        <Input
+          name="stayTime"
+          id="stay-time-field"
+          placeholder="Quantos dias deseja ficar?"
+          label="Tempo de estadia"
+          typeField="input"
+          type="number"
         />
         <Input
           name="dateTime"
