@@ -11,8 +11,8 @@ function ReserveForm() {
         client_name: "",
         phonenumber: "",
         hotel_country: "Selecione o hotel",
-        datetime: "",
-        stay_time: "",
+        start_date: "",
+        end_date: "",
         message: "",
       }}
       validationSchema={validationSchema}
@@ -23,8 +23,8 @@ function ReserveForm() {
           client_name: values.client_name,
           phonenumber: values.phonenumber,
           hotel_country: values.hotel_country,
-          datetime: values.datetime,
-          stay_time: String(values.stay_time),
+          start_date: values.start_date,
+          end_date: values.end_date,
           message: values.message,
         };
 
@@ -93,20 +93,20 @@ function ReserveForm() {
           ]}
         />
         <Input
-          name="stay_time"
-          id="stay-time-field"
-          placeholder="Quantos dias deseja ficar?"
-          label="Tempo de estadia"
+          name="start_date"
+          id="start-date-field"
+          placeholder=""
+          label="Início da estadia"
           typeField="input"
-          type="text"
+          type="date"
         />
         <Input
-          name="datetime"
-          id="datetime-field"
+          name="end_date"
+          id="end-date-field"
           placeholder=""
-          label="Data da estadia"
+          label="Fim da estadia"
           typeField="input"
-          type="datetime-local"
+          type="date"
         />
         <Input
           name="message"

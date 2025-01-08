@@ -21,10 +21,14 @@ const validationSchema = Yup.object().shape({
       "Este país não está listado!"
     )
     .required("Este campo é obrigatório"),
-  datetime: Yup.string().required("Este campo é obrigatório!"),
-  stay_time: Yup.number()
-    .min(1, "O número mínimo de dias é 1.")
-    .max(40, "O número máximo de dias é 40")
+  start_date: Yup.date()
+    .min(new Date(), "A data de início não pode estar no passado!")
+    .required("Este campo é obrigatório!"),
+  end_date: Yup.date()
+    .min(
+      Yup.ref("start_date"),
+      "A data de término deve ser superior a data de início!"
+    )
     .required("Este campo é obrigatório!"),
 });
 

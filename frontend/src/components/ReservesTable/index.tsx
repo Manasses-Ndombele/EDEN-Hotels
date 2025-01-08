@@ -41,8 +41,8 @@ function ReservesTable() {
             <th>Nome</th>
             <th>Telefone</th>
             <th>Hospedagem para</th>
-            <th>Marcação</th>
-            <th>Estadia de</th>
+            <th>Início</th>
+            <th>Fim</th>
             <th>Estado</th>
             <th>Mensagem</th>
             <th>Ações</th>
@@ -55,8 +55,8 @@ function ReservesTable() {
                 <td>{reserve["client_name"]}</td>
                 <td>{reserve["phonenumber"]}</td>
                 <td>{reserve["hotel_country"]}</td>
-                <td>{reserve["datetime"]}</td>
-                <td>{reserve["stay_time"]} dias</td>
+                <td>{reserve["start_date"]}</td>
+                <td>{reserve["end_date"]}</td>
                 <td>{reserve["status"]}</td>
                 <td>
                   {reserve["message"] !== ""

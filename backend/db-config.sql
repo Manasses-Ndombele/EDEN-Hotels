@@ -15,8 +15,8 @@ CREATE TABLE IF NOT EXISTS `Reserves` (
     `client_name` VARCHAR(30) NOT NULL,
     `phonenumber` VARCHAR(30) NOT NULL,
     `hotel_country` VARCHAR(100) NOT NULL,
-    `stay_time` INT NOT NULL,
-    `datetime` DATETIME NOT NULL,
+    `start_date` DATE NOT NULL,
+    `end_date` DATE NOT NULL,
     `message` TEXT NULL,
     `status` VARCHAR(12) NOT NULL DEFAULT 'RESERVADO',
 );

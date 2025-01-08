@@ -16,7 +16,7 @@
     }
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $requestFields = ["client_name", "phonenumber", "hotel_country", "stay_time", "datetime"];
+        $requestFields = ["client_name", "phonenumber", "hotel_country", "start_date", "end_date"];
         $validationErrors = validateRequiredFields($_POST, $requestFields);
         if (!empty($validationErrors)) {
             echo Response::json(400, "Dados da reserva inválidos!", [
@@ -30,15 +30,15 @@
             $clientName = htmlspecialchars($_POST["client_name"]);
             $phonenumber = htmlspecialchars($_POST["phonenumber"]);
             $hotelCountry = htmlspecialchars($_POST["hotel_country"]);
-            $stayTime = htmlspecialchars($_POST["stay_time"]);
-            $datetime = htmlspecialchars($_POST["datetime"]);
+            $start_date = htmlspecialchars($_POST["start_date"]);
+            $end_date = htmlspecialchars($_POST["end_date"]);
             $message = isset($_POST["message"]) ? htmlspecialchars($_POST["message"]) : null;
             $queryResult = $reserve->create(
                 $client_name=$clientName,
                 $phonenumber=$phonenumber,
                 $hotel_country=$hotelCountry,
-                $stay_time=$stayTime,
-                $datetime=$datetime,
+                $start_date=$start_date,
+                $end_date=$end_date,
                 $message=$message
             );
 

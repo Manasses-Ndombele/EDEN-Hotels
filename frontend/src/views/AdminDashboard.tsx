@@ -6,6 +6,7 @@ import ReservesTable from "../components/ReservesTable";
 import UsersTable from "../components/UsersTable";
 import Footer from "../components/Footer";
 import UserContext from "../services/UserContext";
+import EditUserForm from "../components/EditUserForm";
 
 function AdminDashboard() {
   const navigate = useNavigate();
@@ -29,6 +30,7 @@ function AdminDashboard() {
         </p>
         <ReservesTable />
         <UsersTable />
+        <EditUserForm />
       </main>
       <Footer />
     </>

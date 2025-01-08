@@ -70,10 +70,11 @@
 
         public function update_user(string $email, array $datas) {
             $db = new \Database();
-            $stmt = $db->conn->prepare("UPDATE `Users` SET `username` = ?, `email` = ? WHERE `email` = ?");
+            $stmt = $db->conn->prepare("UPDATE `Users` SET `username` = ?, `email` = ?, `active` = ? WHERE `email` = ?");
             $newUsername = $datas["username"];
             $newEmail = $datas["email"];
-            $stmt->bind_param('sss', $newUsername, $newEmail, $email);
+            $newActive = $datas["active"];
+            $stmt->bind_param('ssss', $newUsername, $newEmail, $newActive, $email);
             if ($stmt->execute()) {
                 $stmt->close();
                 $db->conn->close();

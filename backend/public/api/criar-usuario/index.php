@@ -3,26 +3,15 @@
     require __DIR__ . "/../../../vendor/autoload.php";
     use App\Backend\Users;
     use App\Backend\Response;
-
-    function validateFields(array $data, array $fields): array {
-        $errors = [];
-        foreach ($fields as $field) {
-            if (!isset($data[$field]) || $data[$field] === "") {
-                $errors[] = "O campo '$field' é obrigatório!";
-            }
-        }
-
-        return $errors;
-    }
+    use App\Backend\FormFields;
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $requestFields = ["username", "email", "password"];
-        $validationErrors = validateFields($_POST, $requestFields);
+        $validationErrors = FormFields::validate($_POST, $requestFields);
         if (!empty($validationErrors)) {
             echo Response::json(400, "Dados do usuário inválidos!", [
                 "success" => false,
-                "errors" => $validationErrors,
-                "form" => [$_POST["username"], $_POST["email"], $_POST["password"]]
+                "errors" => $validationErrors
             ]);
 
             exit;
