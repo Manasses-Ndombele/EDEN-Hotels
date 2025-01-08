@@ -1,0 +1,23 @@
+{
+    "name": "app/backend",
+    "description": "EDEN Hotels site institucional para hotel com administração de reservas",
+    "type": "project",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "App\\Backend\\": "utils/",
+            "App\\Backend\\Config\\": "."
+        }
+    },
+    "authors": [
+        {
+            "name": "Manasses Ndombele",
+            "email": "manassesndombelefreelancer@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "firebase/php-jwt": "dev-main",
+        "symfony/dotenv": "7.3.x-dev"
+    }
+}
