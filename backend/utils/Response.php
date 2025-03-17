@@ -1,13 +1,16 @@
 <?php
-    namespace App\Utils;
+    namespace App\Backend;
     class Response {
-        public static function json(int $status=200, string $message="", array $data=null) {
-            header("Content-Type", "application/json");
-            return json_encode([
-                "status" => $status,
-                "message" => $message,
-                "data" => $data
-            ]);
+        public static function json(int $status=200, string $message="", array $datas=null) {
+            http_response_code($status);
+            $response = ["message" => $message];
+            if ($datas) {
+                foreach ($datas as $key => $data) {
+                    $response[$key] = $data;
+                }
+            }
+
+            return json_encode($response);
         }
     }
 ?>

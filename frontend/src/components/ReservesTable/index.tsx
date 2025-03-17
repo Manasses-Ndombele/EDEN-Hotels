@@ -3,13 +3,15 @@ function ReservesTable() {
     <div id="reserves-table-area">
       <table>
         <thead>
-          <th>Nome</th>
-          <th>Telefone</th>
-          <th>Hospedagem para</th>
-          <th>Marcação</th>
-          <th>Estadia de</th>
-          <th>Estado</th>
-          <th>Mensagem</th>
+          <tr>
+            <th>Nome</th>
+            <th>Telefone</th>
+            <th>Hospedagem para</th>
+            <th>Marcação</th>
+            <th>Estadia de</th>
+            <th>Estado</th>
+            <th>Mensagem</th>
+          </tr>
         </thead>
         <tbody>
           <tr>

@@ -1,9 +1,22 @@
+import { useContext, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import Header from "../components/Header";
 import BrandArea from "../components/BrandArea";
 import ReservesTable from "../components/ReservesTable";
 import Footer from "../components/Footer";
+import UserContext from "../services/UserContext";
 
 function AdminDashboard() {
+  const navigate = useNavigate();
+  const { loggedIn, user } = useContext(UserContext);
+
+  useEffect(() => {
+    if (!loggedIn && Object.keys(user).length === 0 && !localStorage.getItem("token")) {
+      console.log("Usuário não está logado!");
+      navigate("/admin/login");
+    }
+  }, [loggedIn, navigate, user])
+
   return (
     <>
       <Header />
