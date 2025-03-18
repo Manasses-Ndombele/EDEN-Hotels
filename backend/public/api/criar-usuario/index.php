@@ -3,52 +3,56 @@
     require __DIR__ . "/../../../vendor/autoload.php";
     use App\Backend\Users;
     use App\Backend\Response;
-    use App\Backend\Auth;
-    use App\Backend\SuperUser;
+
+    function validateFields(array $data, array $fields): array {
+        $errors = [];
+        foreach ($fields as $field) {
+            if (!isset($data[$field]) || $data[$field] === "") {
+                $errors[] = "O campo '$field' é obrigatório!";
+            }
+        }
+
+        return $errors;
+    }
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $user = Auth::verify_token();
-        if (!$user) {
-            echo Response::json(403, "Token inválido", ["success" => false]);
-            exit;
-        }
+        $requestFields = ["username", "email", "password"];
+        $validationErrors = validateFields($_POST, $requestFields);
+        if (!empty($validationErrors)) {
+            echo Response::json(400, "Dados do usuário inválidos!", [
+                "success" => false,
+                "errors" => $validationErrors,
+                "form" => [$_POST["username"], $_POST["email"], $_POST["password"]]
+            ]);
 
-        if (!SuperUser::verify($user["email"])) {
-            echo Response::json(403, "Autorização não concedida!", ["success" => false]);
             exit;
-        }
-
-        $user = new Users();
-        $requestNullData = false;
-        isset($_POST["username"])
-        ? $username = $_POST["username"]
-        : $requestNullData = true;
-        isset($_POST["email"])
-        ? $email = $_POST["email"]
-        : $requestNullData = true;
-        isset($_POST["password"])
-        ? $password = $_POST["password"]
-        : $requestNullData = true;
-        if (!$requestNullData) {
+        } else {
+            $username = htmlspecialchars($_POST["username"]);
+            $email = htmlspecialchars($_POST["email"]);
+            $password = htmlspecialchars($_POST["password"]);
+            $user = new Users();
             $queryResult = $user->create(
                 $username=$username,
                 $email=$email,
                 $password=$password
             );
-        } else {
-            echo Response::json(400, "Dados do usuário inválidos!", ["success" => false]);
-        }
 
-        if ($queryResult["success"]) {
-            echo Response::json(200, "Usuário criado com sucesso!", [
-                "success" => true,
-                "user_id" => $queryResult["id"]
-            ]);
-        } else {
-            echo Response::json(200, "Não foi possível cadastrar o usuário.", ["success" => false]);
-        }
+            if ($queryResult["success"]) {
+                echo Response::json(200, "Usuário criado com sucesso!", [
+                    "success" => true,
+                    "id" => $queryResult["id"]
+                ]);
 
-        exit;
+                exit;
+            } else {
+                echo Response::json(200, "Não foi possível cadastrar o usuário.", [
+                    "success" => false,
+                    "error" => $queryResult["error"]
+                ]);
+
+                exit;
+            }
+        }
     } else {
         echo Response::json(405, "Método da requesição inválido.", ["success" => false]);
         exit;

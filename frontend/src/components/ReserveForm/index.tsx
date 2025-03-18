@@ -1,27 +1,68 @@
-import Input from "../Input";
 import { Formik, Form } from "formik";
-import Button from "../Button";
+import api from "../../services/api";
+import validationSchema from "./validationSchema";
+import Input from "../Input";
+import "./index-test.css";
 
 function ReserveForm() {
   return (
     <Formik
       initialValues={{
-        clientName: "",
-        phoneNumber: 9,
-        hotelCountry: "Selecione o hotel",
-        dateTime: "",
-        stayTime: 1,
+        client_name: "",
+        phonenumber: "",
+        hotel_country: "Selecione o hotel",
+        datetime: "",
+        stay_time: "",
         message: "",
       }}
+      validationSchema={validationSchema}
       onSubmit={(values, { setSubmitting, resetForm }) => {
-        console.log(`Nome do cliente: ${values.clientName}`);
+        console.log("Submetendo o formulário!");
         setSubmitting(true);
-        resetForm();
+        const params = {
+          client_name: values.client_name,
+          phonenumber: values.phonenumber,
+          hotel_country: values.hotel_country,
+          datetime: values.datetime,
+          stay_time: String(values.stay_time),
+          message: values.message,
+        };
+
+        api
+          .post("criar-reserva/", new URLSearchParams(params).toString(), {
+            headers: {
+              "Content-Type": "application/x-www-form-urlencoded",
+            },
+          })
+          .then((response) => {
+            console.log(response.status);
+            if (response.status === 200) {
+              if (response.data.success) {
+                console.log(response.data.message);
+                console.log(
+                  `Reserva criada com sucesso! ID: ${response.data.reserve_id}`
+                );
+
+                resetForm();
+              } else {
+                console.log(response.data.message);
+              }
+            } else {
+              console.log(response.status);
+              console.log(response.data.message);
+            }
+          })
+          .catch((error) => {
+            console.log(error);
+          })
+          .finally(() => {
+            setSubmitting(false);
+          });
       }}
     >
       <Form>
         <Input
-          name="clientName"
+          name="client_name"
           id="client-name-field"
           placeholder="Seu nome"
           label="Nome"
@@ -29,15 +70,15 @@ function ReserveForm() {
           typeField="input"
         />
         <Input
-          name="phoneNumber"
+          name="phonenumber"
           id="phone-number-field"
           placeholder="Seu número de telefone"
           label="Telefone"
-          type="number"
+          type="text"
           typeField="input"
         />
         <Input
-          name="hotelCountry"
+          name="hotel_country"
           id="hotel-country-field"
           placeholder="Selecione um de nossos hotéis"
           label="Hotel"
@@ -52,20 +93,20 @@ function ReserveForm() {
           ]}
         />
         <Input
-          name="stayTime"
+          name="stay_time"
           id="stay-time-field"
           placeholder="Quantos dias deseja ficar?"
           label="Tempo de estadia"
           typeField="input"
-          type="number"
+          type="text"
         />
         <Input
-          name="dateTime"
+          name="datetime"
           id="datetime-field"
           placeholder=""
           label="Data da estadia"
           typeField="input"
-          type="datetime"
+          type="datetime-local"
         />
         <Input
           name="message"
@@ -75,7 +116,7 @@ function ReserveForm() {
           typeField="textarea"
           type="text"
         />
-        <Button type="submit">Enviar</Button>
+        <button type="submit">Enviar</button>
       </Form>
     </Formik>
   );

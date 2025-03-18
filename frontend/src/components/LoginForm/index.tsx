@@ -2,13 +2,18 @@ import { useContext } from "react";
 import { Formik, Form } from "formik";
 import api from "../../services/api";
 import Input from "../Input";
-import Button from "../Button";
 import validationSchema from "./validationShema";
 import UserContext from "../../services/UserContext";
+import { useNavigate } from "react-router-dom";
 
 function LoginForm() {
-  const { setLoggedIn } = useContext(UserContext);
- 
+  const { loggedIn, setLoggedIn, user } = useContext(UserContext);
+  const navigate = useNavigate();
+
+  if (loggedIn && Object.keys(user).length === 0) {
+    navigate("/admin/dashboard");
+  }
+
   return (
     <Formik
       initialValues={{ email: "", password: "" }}
@@ -44,12 +49,13 @@ function LoginForm() {
             } else {
               console.log(response.data.message);
               console.log("Código da resposta: ", response.status);
-              resetForm();
             }
           })
           .catch((error) => {
             console.log("Erro no servidor: ", error);
-            resetForm();
+          })
+          .finally(() => {
+            setSubmitting(false);
           });
       }}
     >
@@ -70,7 +76,7 @@ function LoginForm() {
           name="password"
           typeField="input"
         />
-        <Button type="submit">Login</Button>
+        <button type="submit">Login</button>
       </Form>
     </Formik>
   );

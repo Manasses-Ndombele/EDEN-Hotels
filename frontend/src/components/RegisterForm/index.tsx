@@ -1,19 +1,69 @@
+import { useContext } from "react";
 import { Formik, Form } from "formik";
+import { useNavigate } from "react-router-dom";
+import api from "../../services/api";
 import Input from "../Input";
-import Button from "../Button";
+import validationSchema from "./validationSchema";
+import UserContext from "../../services/UserContext";
+import "./index-test.css";
 
 function RegisterForm() {
+  const { loggedIn, user } = useContext(UserContext);
+  const navigate = useNavigate();
+
+  if (loggedIn && Object.keys(user).length === 0) {
+    navigate("/admin/dashboard");
+  }
+
   return (
     <Formik
       initialValues={{
-        adminUserName: "",
-        adminEmail: "",
-        adminPassword: "",
+        username: "",
+        email: "",
+        password: "",
       }}
+      validationSchema={validationSchema}
       onSubmit={(values, { setSubmitting, resetForm }) => {
-        console.log(`Nome: ${values.adminUserName}`);
         setSubmitting(true);
-        resetForm();
+        const params = {
+          username: values.username,
+          email: values.email,
+          password: values.password
+        }
+
+        api
+          .post(
+            "/criar-usuario",
+            new URLSearchParams(params).toString(),
+            {
+              headers: {
+                "Content-Type": "application/x-www-form-urlencoded"
+              }
+            }
+          )
+          .then((response) => {
+            if (response.status === 200) {
+              if (response.data.success) {
+                console.log(response.data.message);
+                console.log("ID do usuário: ", response.data.id);
+                resetForm();
+                navigate("/admin/login");
+              } else {
+                console.log(response.data.message);
+                console.log(response.data.error);
+              }
+            } else {
+              console.log(`Status: ${response.status}`);
+              console.log(response.data.message);
+              console.log(response.data.errors)
+            }
+          })
+          .catch((error) => {
+            console.log(error)
+          })
+          .finally(() => {
+            setSubmitting(false);
+          });
       }}
     >
       <Form>
@@ -41,7 +91,7 @@ function RegisterForm() {
           name="password"
           typeField="input"
         />
-        <Button type="submit">Registrar-se</Button>
+        <button type="submit">Enviar</button>
       </Form>
     </Formik>
   );

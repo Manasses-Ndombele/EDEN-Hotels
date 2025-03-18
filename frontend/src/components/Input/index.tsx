@@ -1,13 +1,16 @@
 import { Field, ErrorMessage } from "formik";
 
-interface Props {
+interface SetFieldProps {
   type?: string;
-  label: string;
   placeholder: string;
   id: string;
   name: string;
   typeField: string;
   selectOptions?: string[];
+}
+
+interface InputProps extends SetFieldProps {
+  label: string;
 }
 
 function setField({
@@ -17,18 +20,21 @@ function setField({
   name,
   typeField,
   selectOptions,
-}: Props) {
-  if (typeField == "select") {
-    selectOptions?.unshift(placeholder);
+}: SetFieldProps) {
+  if (typeField === "select") {
+    const options = selectOptions ? [placeholder, ...selectOptions] : [placeholder];
+
     return (
-      <Field type={type} id={id} name={name} component="select">
-        {selectOptions?.map((option, index) =>
-          index == 0 ? (
-            <option key={index} selected disabled>
+      <Field type={type} id={id} name={name} as="select">
+        {options.map((option, index) =>
+          index === 0 ? (
+            <option key={index} value="" disabled>
               {option}
             </option>
           ) : (
-            <option key={index}>{option}</option>
+            <option key={index} value={option}>
+              {option}
+            </option>
           )
         )}
       </Field>
@@ -40,17 +46,17 @@ function setField({
         placeholder={placeholder}
         id={id}
         name={name}
-        component={typeField}
+        as={typeField}
       />
     );
   }
 }
 
-function Input({ type, label, placeholder, id, name, typeField }: Props) {
+function Input({ type, label, placeholder, id, name, typeField, selectOptions }: InputProps) {
   return (
     <section>
       <label htmlFor={id}>{label}</label>
-      {setField({ type, label, placeholder, id, name, typeField })}
+      {setField({ type, placeholder, id, name, typeField, selectOptions })}
       <ErrorMessage name={name} component="span" />
     </section>
   );

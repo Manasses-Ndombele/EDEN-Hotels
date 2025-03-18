@@ -1,28 +1,34 @@
 <?php
     namespace App\Backend;
-    require_once __DIR__ . "/../config/index.php";
+    require_once __DIR__ . "/../config/db.php";
 
     class Reserves {
         public function create(string $client_name, int $phonenumber, string $hotel_country, int $stay_time, string $datetime, string $message = null) {
             $db = new \Database();
-            if ($message) {
-                $stmt = $db->conn->prepare("INSERT INTO `Reserves`
-                    (`client_name`, `phonenumber`, `hotel_country`, `stay_time`, `datetime`, `message`)
-                    VALUES (?, ?, ?, ?, ?, ?)
-                ");
+            $stmt = $db->conn->prepare("INSERT INTO `Reserves`
+                (`client_name`, `phonenumber`, `hotel_country`, `stay_time`, `datetime`, `message`)
+                VALUES (?, ?, ?, ?, ?, ?)
+            ");
 
-                $stmt->bind_param('sissss', $client_name, $phonenumber, $hotel_country, $stay_time, $datetime, $message);
-                if ($stmt->execute()) {
-                    echo "Reserva criada com sucesso!";
-                    $stmt->close();
-                    $db->conn->close();
-                    return true;
-                } else {
-                    echo "Não foi possível criar a reserva " . $stmt->error;
-                    $stmt->close();
-                    $db->conn->close();
-                    return false;
-                }
+            $stmt->bind_param("sssiss", $client_name, $phonenumber, $hotel_country, $stay_time, $datetime, $message);
+            if ($stmt->execute()) {
+                $datas = [
+                    "success" => true,
+                    "id" => $db->conn->insert_id
+                ];
+
+                $stmt->close();
+                $db->conn->close();
+                return $datas;
+            } else {
+                $datas = [
+                    "success" => false,
+                    "error" => $stmt->error
+                ];
+
+                $stmt->close();
+                $db->conn->close();
+                return $datas;
             }
         }
 

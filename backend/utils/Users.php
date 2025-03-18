@@ -5,14 +5,36 @@
     class Users {
         public function create(string $username, string $email, string $password) {
             $db = new \Database();
-            $db->createRow($table="Users", $datas=[
-                "username" => $username,
-                "email" => $email,
-                "password" => $password
-            ]);
+            $stmt = $db->conn->prepare("INSERT INTO `Users`
+                (`username`, `email`, `password`, `type`)
+                VALUES (?, ?, ?, ?)
+            ");
+
+            $password_hash = password_hash($password, PASSWORD_DEFAULT);
+            $account_type = 'ADMIN';
+            $stmt->bind_param('ssss', $username, $email, $password_hash, $account_type);
+            if ($stmt->execute()) {
+                $datas = [
+                    "success" => true,
+                    "id" => $db->conn->insert_id 
+                ];
+
+                $stmt->close();
+                $db->conn->close();
+                return $datas;
+            } else {
+                $datas = [
+                    "success" => false,
+                    "error" => $stmt->error
+                ];
+
+                $stmt->close();
+                $db->conn->close();
+                return $datas;
+            }
         }
 
-        public function get_user(string $email="", bool $all=false) {
+        public function get_user(string $email="", bool $all=false, int $active=1) {
             $db = new \Database();
             if ($all) {
                 $sqlQuery = "SELECT * FROM `Users` WHERE `type` = 'ADMIN' LIMIT 30";
@@ -24,8 +46,8 @@
 
                 return $users;
             } else {
-                $stmt = $db->conn->prepare("SELECT * FROM `Users` WHERE `email` = ?");
-                $stmt->bind_param('s', $email);
+                $stmt = $db->conn->prepare("SELECT * FROM `Users` WHERE `email` = ? AND `active` = ?");
+                $stmt->bind_param('si', $email, $active);
                 $stmt->execute();
                 $result = $stmt->get_result();
                 if ($row = $result->fetch_assoc()) {
