@@ -37,7 +37,7 @@
         public function get_user(string $email="", bool $all=false, int $active=1) {
             $db = new \Database();
             if ($all) {
-                $sqlQuery = "SELECT * FROM `Users` WHERE `type` = 'ADMIN' LIMIT 30";
+                $sqlQuery = "SELECT * FROM `Users` WHERE `type` = 'ADMIN'";
                 $results = $db->conn->query($sqlQuery);
                 $users = [];
                 while ($row = $results->fetch_assoc()) {
@@ -46,8 +46,14 @@
 
                 return $users;
             } else {
-                $stmt = $db->conn->prepare("SELECT * FROM `Users` WHERE `email` = ? AND `active` = ?");
-                $stmt->bind_param('si', $email, $active);
+                if ($active === 2) {
+                    $stmt = $db->conn->prepare("SELECT * FROM `Users` WHERE `email` = ?");   
+                    $stmt->bind_param('s', $email);                 
+                } else {
+                    $stmt = $db->conn->prepare("SELECT * FROM `Users` WHERE `email` = ? AND `active` = ?");
+                    $stmt->bind_param('si', $email, $active);
+                }
+
                 $stmt->execute();
                 $result = $stmt->get_result();
                 if ($row = $result->fetch_assoc()) {

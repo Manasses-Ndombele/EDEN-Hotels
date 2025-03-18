@@ -1,6 +1,5 @@
 import BrandArea from "../BrandArea";
 import { Formik, Form, Field, ErrorMessage } from "formik";
-import Button from "../Button";
 
 function Footer() {
   return (
@@ -30,7 +29,7 @@ function Footer() {
                 name="email"
               />
               <ErrorMessage component="span" name="email" />
-              <Button type="submit">Submeter</Button>
+              <button type="submit">Submeter</button>
             </Form>
           </Formik>
         </div>

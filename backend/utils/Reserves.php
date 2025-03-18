@@ -35,16 +35,17 @@
         public function get_reserve(int $id=0, bool $all=false) {
             $db = new \Database();
             if ($all) {
-                $sqlQuery = "SELECT * FROM `Reserves` LIMIT 30";
+                $sqlQuery = "SELECT * FROM `Reserves`";
                 $results = $db->conn->query($sqlQuery);
                 $reserves = [];
                 while ($row = $results->fetch_assoc()) {
                     $reserves[] = $row;
                 }
 
+                $db->conn->close();
                 return $reserves;
             } else {
-                $stmt = $db->conn->prepare("SELECT (`client_name`, `phonenumber`, `hotel_country`, `stay_time`, `datetime`, `message`, `status`) FROM `Reserves` WHERE `id` = ?");
+                $stmt = $db->conn->prepare("SELECT * FROM `Reserves` WHERE `id` = ?");
                 $stmt->bind_param("i", $id);
                 $stmt->execute();
                 $result = $stmt->get_result();

@@ -1,4 +1,38 @@
+import { useState, useEffect } from "react";
+import { FaRegPenToSquare } from "react-icons/fa6";
+import { MdDeleteForever } from "react-icons/md";
+import api from "../../services/api";
+
 function ReservesTable() {
+  const [loading, setLoading] = useState(true);
+  const [reservesDatas, setReservesDatas] = useState([]);
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    api
+      .get("/reservas", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((response) => {
+        if (response.status === 200 && response.data.success) {
+          setReservesDatas(response.data.datas);
+          console.log(response.data.message);
+          setLoading(false);
+        } else {
+          console.log(`Status ${response.status}`);
+          console.log(response.data.message);
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+
+  if (loading) {
+    return <div>Carregando reservas...</div>;
+  }
+
   return (
     <div id="reserves-table-area">
       <table>
@@ -11,177 +45,35 @@ function ReservesTable() {
             <th>Estadia de</th>
             <th>Estado</th>
             <th>Mensagem</th>
+            <th>Ações</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>Silvestre dos Santos</td>
-            <td>923 223 334</td>
-            <td>França - Paris</td>
-            <td>01/05/2025 - 07:00</td>
-            <td>20 dias</td>
-            <td>Expirado</td>
-            <td>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente
-              porro aperiam illum dolores exercitationem? Facilis vitae sapiente
-              quas! Odit consequuntur reprehenderit dolores similique
-              perferendis pariatur atque eveniet? Voluptates, quaerat fugit!
-            </td>
-          </tr>
-          <tr>
-            <td>Silvestre dos Santos</td>
-            <td>923 223 334</td>
-            <td>França - Paris</td>
-            <td>01/05/2025 - 07:00</td>
-            <td>20 dias</td>
-            <td>Expirado</td>
-            <td>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente
-              porro aperiam illum dolores exercitationem? Facilis vitae sapiente
-              quas! Odit consequuntur reprehenderit dolores similique
-              perferendis pariatur atque eveniet? Voluptates, quaerat fugit!
-            </td>
-          </tr>
-          <tr>
-            <td>Silvestre dos Santos</td>
-            <td>923 223 334</td>
-            <td>França - Paris</td>
-            <td>01/05/2025 - 07:00</td>
-            <td>20 dias</td>
-            <td>Expirado</td>
-            <td>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente
-              porro aperiam illum dolores exercitationem? Facilis vitae sapiente
-              quas! Odit consequuntur reprehenderit dolores similique
-              perferendis pariatur atque eveniet? Voluptates, quaerat fugit!
-            </td>
-          </tr>
-          <tr>
-            <td>Silvestre dos Santos</td>
-            <td>923 223 334</td>
-            <td>França - Paris</td>
-            <td>01/05/2025 - 07:00</td>
-            <td>20 dias</td>
-            <td>Expirado</td>
-            <td>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente
-              porro aperiam illum dolores exercitationem? Facilis vitae sapiente
-              quas! Odit consequuntur reprehenderit dolores similique
-              perferendis pariatur atque eveniet? Voluptates, quaerat fugit!
-            </td>
-          </tr>
-          <tr>
-            <td>Silvestre dos Santos</td>
-            <td>923 223 334</td>
-            <td>França - Paris</td>
-            <td>01/05/2025 - 07:00</td>
-            <td>20 dias</td>
-            <td>Expirado</td>
-            <td>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente
-              porro aperiam illum dolores exercitationem? Facilis vitae sapiente
-              quas! Odit consequuntur reprehenderit dolores similique
-              perferendis pariatur atque eveniet? Voluptates, quaerat fugit!
-            </td>
-          </tr>
-          <tr>
-            <td>Silvestre dos Santos</td>
-            <td>923 223 334</td>
-            <td>França - Paris</td>
-            <td>01/05/2025 - 07:00</td>
-            <td>20 dias</td>
-            <td>Expirado</td>
-            <td>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente
-              porro aperiam illum dolores exercitationem? Facilis vitae sapiente
-              quas! Odit consequuntur reprehenderit dolores similique
-              perferendis pariatur atque eveniet? Voluptates, quaerat fugit!
-            </td>
-          </tr>
-          <tr>
-            <td>Silvestre dos Santos</td>
-            <td>923 223 334</td>
-            <td>França - Paris</td>
-            <td>01/05/2025 - 07:00</td>
-            <td>20 dias</td>
-            <td>Expirado</td>
-            <td>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente
-              porro aperiam illum dolores exercitationem? Facilis vitae sapiente
-              quas! Odit consequuntur reprehenderit dolores similique
-              perferendis pariatur atque eveniet? Voluptates, quaerat fugit!
-            </td>
-          </tr>
-          <tr>
-            <td>Silvestre dos Santos</td>
-            <td>923 223 334</td>
-            <td>França - Paris</td>
-            <td>01/05/2025 - 07:00</td>
-            <td>20 dias</td>
-            <td>Expirado</td>
-            <td>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente
-              porro aperiam illum dolores exercitationem? Facilis vitae sapiente
-              quas! Odit consequuntur reprehenderit dolores similique
-              perferendis pariatur atque eveniet? Voluptates, quaerat fugit!
-            </td>
-          </tr>
-          <tr>
-            <td>Silvestre dos Santos</td>
-            <td>923 223 334</td>
-            <td>França - Paris</td>
-            <td>01/05/2025 - 07:00</td>
-            <td>20 dias</td>
-            <td>Expirado</td>
-            <td>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente
-              porro aperiam illum dolores exercitationem? Facilis vitae sapiente
-              quas! Odit consequuntur reprehenderit dolores similique
-              perferendis pariatur atque eveniet? Voluptates, quaerat fugit!
-            </td>
-          </tr>
-          <tr>
-            <td>Silvestre dos Santos</td>
-            <td>923 223 334</td>
-            <td>França - Paris</td>
-            <td>01/05/2025 - 07:00</td>
-            <td>20 dias</td>
-            <td>Expirado</td>
-            <td>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente
-              porro aperiam illum dolores exercitationem? Facilis vitae sapiente
-              quas! Odit consequuntur reprehenderit dolores similique
-              perferendis pariatur atque eveniet? Voluptates, quaerat fugit!
-            </td>
-          </tr>
-          <tr>
-            <td>Silvestre dos Santos</td>
-            <td>923 223 334</td>
-            <td>França - Paris</td>
-            <td>01/05/2025 - 07:00</td>
-            <td>20 dias</td>
-            <td>Expirado</td>
-            <td>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente
-              porro aperiam illum dolores exercitationem? Facilis vitae sapiente
-              quas! Odit consequuntur reprehenderit dolores similique
-              perferendis pariatur atque eveniet? Voluptates, quaerat fugit!
-            </td>
-          </tr>
-          <tr>
-            <td>Silvestre dos Santos</td>
-            <td>923 223 334</td>
-            <td>França - Paris</td>
-            <td>01/05/2025 - 07:00</td>
-            <td>20 dias</td>
-            <td>Expirado</td>
-            <td>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente
-              porro aperiam illum dolores exercitationem? Facilis vitae sapiente
-              quas! Odit consequuntur reprehenderit dolores similique
-              perferendis pariatur atque eveniet? Voluptates, quaerat fugit!
-            </td>
-          </tr>
+          {reservesDatas.length !== 0 ? (
+            reservesDatas.map((reserve, index) => (
+              <tr key={index}>
+                <td>{reserve["client_name"]}</td>
+                <td>{reserve["phonenumber"]}</td>
+                <td>{reserve["hotel_country"]}</td>
+                <td>{reserve["datetime"]}</td>
+                <td>{reserve["stay_time"]} dias</td>
+                <td>{reserve["status"]}</td>
+                <td>
+                  {reserve["message"] !== ""
+                    ? reserve["message"]
+                    : "Não informado"}
+                </td>
+                <td>
+                  <button type="button"><FaRegPenToSquare /></button>
+                  <button type="button"><MdDeleteForever /></button>
+                </td>
+              </tr>
+            ))
+          ) : (
+            <tr key="1">
+              <td colSpan={7}>Não tem nenhuma reserva registrada ainda!</td>
+            </tr>
+          )}
         </tbody>
       </table>
     </div>
