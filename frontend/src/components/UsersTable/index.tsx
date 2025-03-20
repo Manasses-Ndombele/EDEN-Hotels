@@ -1,32 +1,37 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import api from "../../services/api";
+import UserContext from "../../services/UserContext";
 
 function UsersTable() {
   const [loading, setLoading] = useState(true);
   const [usersDatas, setUsersDatas] = useState([]);
-
+  const { loggedIn, user } = useContext(UserContext);
   useEffect(() => {
     const token = localStorage.getItem("token");
-    api
-      .get("/usuarios", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
-      .then((response) => {
-        if (response.status === 200 && response.data.success) {
-          setUsersDatas(response.data.datas);
-          setLoading(false);
-          console.log(response.data.message);
-        } else {
-          console.log(`Status: ${response.status}`);
-          console.log(response.data.message);
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, []);
+    if (loggedIn && Object.keys(user).length !== 0 && token !== null) {
+      if (user.type === "SUPER_USER") {
+        api
+          .get("/usuarios", {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          })
+          .then((response) => {
+            if (response.status === 200 && response.data.success) {
+              setUsersDatas(response.data.datas);
+              setLoading(false);
+              console.log(response.data.message);
+            } else {
+              console.log(`Status: ${response.status}`);
+              console.log(response.data.message);
+            }
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      }
+    }
+  }, [loggedIn, user]);
 
   if (loading) {
     return <div>Carregando usuários...</div>;

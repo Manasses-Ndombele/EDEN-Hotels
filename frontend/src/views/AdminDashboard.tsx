@@ -29,7 +29,7 @@ function AdminDashboard() {
           monitorar as reservas dos clientes
         </p>
         <ReservesTable />
-        <UsersTable />
+        {user.type === "SUPER_USER" ? <UsersTable /> : null}
         <EditUserForm />
       </main>
       <Footer />

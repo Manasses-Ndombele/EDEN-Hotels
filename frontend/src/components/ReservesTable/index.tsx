@@ -1,33 +1,37 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { FaRegPenToSquare } from "react-icons/fa6";
 import { MdDeleteForever } from "react-icons/md";
 import api from "../../services/api";
+import UserContext from "../../services/UserContext";
 
 function ReservesTable() {
   const [loading, setLoading] = useState(true);
   const [reservesDatas, setReservesDatas] = useState([]);
+  const { loggedIn, user } = useContext(UserContext);
   useEffect(() => {
     const token = localStorage.getItem("token");
-    api
-      .get("/reservas", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
-      .then((response) => {
-        if (response.status === 200 && response.data.success) {
-          setReservesDatas(response.data.datas);
-          console.log(response.data.message);
-          setLoading(false);
-        } else {
-          console.log(`Status ${response.status}`);
-          console.log(response.data.message);
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, []);
+    if (loggedIn && Object.keys(user).length !== 0 && token !== null) {
+      api
+        .get("/reservas", {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
+        .then((response) => {
+          if (response.status === 200 && response.data.success) {
+            setReservesDatas(response.data.datas);
+            console.log(response.data.message);
+            setLoading(false);
+          } else {
+            console.log(`Status ${response.status}`);
+            console.log(response.data.message);
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+  }, [loggedIn, user]);
 
   if (loading) {
     return <div>Carregando reservas...</div>;
@@ -64,8 +68,12 @@ function ReservesTable() {
                     : "Não informado"}
                 </td>
                 <td>
-                  <button type="button"><FaRegPenToSquare /></button>
-                  <button type="button"><MdDeleteForever /></button>
+                  <button type="button">
+                    <FaRegPenToSquare />
+                  </button>
+                  <button type="button">
+                    <MdDeleteForever />
+                  </button>
                 </td>
               </tr>
             ))
