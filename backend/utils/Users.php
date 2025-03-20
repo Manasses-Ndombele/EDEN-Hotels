@@ -70,11 +70,10 @@
 
         public function update_user(string $email, array $datas) {
             $db = new \Database();
-            $stmt = $db->conn->prepare("UPDATE `Users` SET `username` = ?, `email` = ?, `active` = ? WHERE `email` = ?");
+            $stmt = $db->conn->prepare("UPDATE `Users` SET `username` = ?, `email` = ? WHERE `email` = ?");
             $newUsername = $datas["username"];
             $newEmail = $datas["email"];
-            $newActive = $datas["active"];
-            $stmt->bind_param('ssss', $newUsername, $newEmail, $newActive, $email);
+            $stmt->bind_param('sss', $newUsername, $newEmail, $email);
             if ($stmt->execute()) {
                 $stmt->close();
                 $db->conn->close();
@@ -94,6 +93,56 @@
                 $stmt->close();
                 $db->conn->close();
                 return true;
+            } else {
+                $stmt->close();
+                $db->conn->close();
+                return false;
+            }
+        }
+
+        public function set_active(string $email, bool $active) {
+            $db = new \Database();
+            $stmt = $db->conn->prepare("UPDATE `Users` SET `active` = ? WHERE `email` = ?");
+            $stmt->bind_param("is", $active, $email);
+            if ($stmt->execute()) {
+                $stmt->close();
+                $db->conn->close();
+                return true;
+            } else {
+                $stmt->close();
+                $db->conn->close();
+                return false;
+            }
+        }
+
+        public function set_password(string $old_password, string $new_password, string $email) {
+            $db = new \Database();
+            $stmt = $db->conn->prepare("SELECT (`password`) FROM `Users` WHERE `email` = ?");
+            $stmt->bind_param("s", $email);
+            $stmt->execute();
+            $result = $stmt->get_result();
+            if ($row = $result->fetch_assoc()) {
+                if (password_verify($old_password, $row["password"])) {
+                    $stmt->close();
+                    $db->conn->close();
+                    $db = new \Database();
+                    $stmt = $db->conn->prepare("UPDATE `Users` SET `password` = ?");
+                    $new_password_hash = password_hash($new_password, PASSWORD_DEFAULT);
+                    $stmt->bind_param("s", $new_password_hash);
+                    if ($stmt->execute()) {
+                        $stmt->close();
+                        $db->conn->close();
+                        return true;
+                    } else {
+                        $stmt->close();
+                        $db->conn->close();
+                        return false;
+                    }
+                } else {
+                    $stmt->close();
+                    $db->conn->close();
+                    return false;
+                }
             } else {
                 $stmt->close();
                 $db->conn->close();

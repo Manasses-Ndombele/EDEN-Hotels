@@ -26,14 +26,12 @@
         } else {
             $email = htmlspecialchars($_GET["email"]);
             if ($email !== $user["datas"]->email) {
-                if (!SuperUser::verify($user["datas"]->email)) {
-                    Response::json(403, "Autorização não concedida!", ["success" => false]);
-                    exit;
-                }
+                Response::json(403, "Autorização não concedida!", ["success" => false]);
+                exit;
             }
         }
 
-        $requestFields = ["username", "email", "active"];
+        $requestFields = ["username", "email", "old_password", "new_password"];
         $input = file_get_contents("php://input");
         parse_str($input, $patchData);
         $validationErrors = FormFields::validate($patchData, $requestFields);
@@ -41,7 +39,6 @@
             echo Response::json(400, "Dados do usuário inválidos!", [
                 "success" => false,
                 "errors" => $validationErrors,
-                "form" => [$patchData["username"], $patchData["email"], $patchData["password"]]
             ]);
 
             exit;
@@ -50,13 +47,20 @@
             $new_datas = [
                 "username" => htmlspecialchars($patchData["username"]),
                 "email" => htmlspecialchars($patchData["email"]),
-                "active" => $patchData["active"] === "ATIVADO" ? 1 : 0
             ];
 
             $user_update = $user->update_user($email, $new_datas);
             if ($user_update) {
-                echo Response::json(200, "Conta atualizada com sucesso!", ["success" => true]);
-                exit;
+                $old_password = htmlspecialchars($patchData["old_password"]);
+                $new_password = htmlspecialchars($patchData["new_password"]);
+                $user_set_new_password = $user->set_password($old_password, $new_password, $email);
+                if ($user_set_new_password) {
+                    echo Response::json(200, "Conta e senha atualizada com sucesso!", ["success" => true]);
+                    exit;
+                } else {
+                    echo Response::json(200, "Conta atualizada com sucesso! Mas sua senha não foi atualizada!", ["success" => true]);
+                    exit;
+                }
             } else {
                 echo Response::json(200, "Não foi possível atualizar a conta!", ["success" => false]);
                 exit;

@@ -6,28 +6,33 @@
     use App\Backend\Auth;
 
     if ($_SERVER["REQUEST_METHOD"] == "DELETE") {
-        $user = Auth::verify_token();
-        if (!$user) {
-            echo Response::json(403, "Token inválido", ["success" => false]);
+        if (!isset($_SERVER["HTTP_AUTHORIZATION"]) || empty($_SERVER["HTTP_AUTHORIZATION"])) {
+            echo Response::json(403, "Token não enviado corretamente", ["success" => false]);
+            exit;
+        }
+
+        $token = trim(str_replace("Bearer ", "", $_SERVER["HTTP_AUTHORIZATION"]));
+        $user = Auth::verify_token($token);
+        if (!$user["success"]) {
+            echo Response::json(403, "Token inválido!", ["success" => false]);
             exit;
         }
 
         if (!isset($_GET["id"])) {
             echo Response::json(403, "ID não informado", ["success" => false]);
             exit;
-        } else {
-            $id = htmlspecialchars($_GET["id"]);
         }
 
-        $reserves = new Reserves();
-        $reserve_delete = $reserves::delete_reserve($id);
+        $id = htmlspecialchars($_GET["id"]);
+        $reserve = new Reserves();
+        $reserve_delete = $reserve->delete_reserve($id);
         if ($reserve_delete) {
             echo Response::json(200, "Reserva eliminada com sucesso!", ["success" => true]);
+            exit;
         } else {
-            echo Response::json(200, "Não foi possível eliminar a reserva!", ["success" => false]);
+            echo Response::json(200, "Uma reserva não pode ser eliminada a não ser que seja do estado expirado", ["success" => false]);
+            exit;
         }
-
-        exit;
     } else {
         echo Response::json(405, "Método da requesição inválido.", ["success" => false]);
         exit;

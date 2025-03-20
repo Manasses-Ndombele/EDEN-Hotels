@@ -10,8 +10,8 @@ interface User {
 const UserContext = createContext<{
     loggedIn: boolean,
     setLoggedIn: (loggedIn: boolean) => void,
-    user: User,
-    setUser: (user: User) => void 
+    user: object,
+    setUser: (user: object) => void 
 }>({
     loggedIn: false,
     setLoggedIn: () => {},

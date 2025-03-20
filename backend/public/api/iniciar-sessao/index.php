@@ -34,11 +34,7 @@
 
                 exit;
             } else {
-                echo Response::json(400, "Email ou senha inválidos!", [
-                    "success" => false,
-                    "resultados_encontrados" => $resultsQuery,
-                    "senha_e_igual" => password_verify($password, $resultsQuery["password"])
-                ]);
+                echo Response::json(400, "Email ou senha inválidos!<br>Verifique se a sua conta já foi ativada por um administrador!", ["success" => false]);
                 exit;
             }
         } else {

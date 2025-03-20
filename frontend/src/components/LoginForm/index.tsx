@@ -7,12 +7,8 @@ import UserContext from "../../services/UserContext";
 import { useNavigate } from "react-router-dom";
 
 function LoginForm() {
-  const { loggedIn, setLoggedIn, user } = useContext(UserContext);
+  const { setLoggedIn } = useContext(UserContext);
   const navigate = useNavigate();
-
-  if (loggedIn && Object.keys(user).length === 0) {
-    navigate("/admin/dashboard");
-  }
 
   return (
     <Formik
@@ -46,6 +42,7 @@ function LoginForm() {
               console.log("Token do backend: ", token, " tipo: ", typeof token);
               localStorage.setItem("token", token);
               setLoggedIn(true);
+              navigate("/admin/dashboard");
             } else {
               console.log(response.data.message);
               console.log("Código da resposta: ", response.status);

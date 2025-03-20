@@ -6,14 +6,19 @@ import UserContext from "../services/UserContext";
 
 function Login() {
   const navigate = useNavigate();
-  const { loggedIn } = useContext(UserContext);
+  const { loggedIn, user } = useContext(UserContext);
 
   useEffect(() => {
-    if (loggedIn) {
+    if (
+      loggedIn &&
+      Object.keys(user).length === 0 &&
+      localStorage.getItem("token") !== null
+    ) {
       console.log("O usuário está logado!");
       navigate("/admin/dashboard");
     }
-  }, [loggedIn, navigate])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <main>

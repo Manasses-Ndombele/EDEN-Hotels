@@ -39,8 +39,11 @@
                 $results = $db->conn->query($sqlQuery);
                 $reserves = [];
                 while ($row = $results->fetch_assoc()) {
-                    $this->refresh_status($row["id"], $row["status"], $row["start_date"], $row["end_date"]);
                     $reserves[] = $row;
+                }
+
+                foreach ($reserves as $reserve) {
+                    $this->refresh_status($reserve["id"], $reserve["status"], $reserve["start_date"], $reserve["end_date"]);
                 }
 
                 $db->conn->close();
@@ -85,12 +88,26 @@
         }
 
         public function delete_reserve(int $id) {
-            $stmt = $db->conn->prepare("DELETE FROM `Reserves` WHERE `id` = ?");
+            $db = new \Database();
+            $stmt = $db->conn->prepare("SELECT (`status`) FROM `Reserves` WHERE `id` = ?");
             $stmt->bind_param("i", $id);
-            if ($stmt->execute()) {
-                $stmt->close();
-                $db->conn->close();
-                return true;
+            $stmt->execute();
+            $result = $stmt->get_result();
+            if ($row = $result->fetch_assoc()) {
+                if ($row["status"] === "EXPIRADO") {
+                    $stmt->close();
+                    $stmt = $db->conn->prepare("DELETE FROM `Reserves` WHERE `id` = ?");
+                    $stmt->bind_param("i", $id);
+                    if ($stmt->execute()) {
+                        $stmt->close();
+                        $db->conn->close();
+                        return true;
+                    } else {
+                        $stmt->close();
+                        $db->conn->close();
+                        return false;
+                    }
+                }
             } else {
                 $stmt->close();
                 $db->conn->close();
@@ -120,10 +137,10 @@
                     $stmt->bind_param("si", $newStatus, $id);
                     if ($stmt->execute()) {
                         $stmt->close();
-                        $bd->conn->close();
+                        $db->conn->close();
                     } else {
                         $stmt->close();
-                        $bd->conn->close();
+                        $db->conn->close();
                     }
                 }
             }

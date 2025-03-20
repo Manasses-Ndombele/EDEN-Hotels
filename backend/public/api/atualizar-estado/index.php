@@ -6,7 +6,7 @@
     use App\Backend\Auth;
     use App\Backend\SuperUser;
 
-    if ($_SERVER["REQUEST_METHOD"] == "DELETE") {
+    if ($_SERVER["REQUEST_METHOD"] == "PATCH") {
         if (!isset($_SERVER["HTTP_AUTHORIZATION"]) || empty($_SERVER["HTTP_AUTHORIZATION"])) {
             echo Response::json(403, "Token não enviado corretamente", ["success" => false]);
             exit;
@@ -19,26 +19,39 @@
             exit;
         }
 
-        if (!isset($_GET["email"])) {
+        if (!isset($_GET["email"]) || !isset($_GET["active"])) {
             echo Response::json(403, "Email não informado", ["success" => false]);
             exit;
         } else {
             $email = htmlspecialchars($_GET["email"]);
+            $active = htmlspecialchars($_GET["active"]);
             if ($email !== $user["datas"]->email) {
                 if (!SuperUser::verify($user["datas"]->email)) {
-                    Response::json(403, "Autorização não concedida!", ["success" => false]);
+                    echo Response::json(403, "Autorização não concedida!", ["success" => false]);
+                    exit;
+                }
+            } else {
+                if ((int) $active === 1) {
+                    if (!SuperUser::verify($user["datas"]->email)) {
+                        echo Response::json(403, "Autorização não concedida!", ["success" => false]);
+                        exit;
+                    }
+                } else if ((int) $active === 0) {
+
+                } else {
+                    echo Response::json(400, "Valor do parâmetro active inválido!", ["success" => false]);
                     exit;
                 }
             }
         }
 
         $user = new Users();
-        $user_delete = $user->delete_user($email);
-        if ($user_delete) {
-            echo Response::json(200, "Conta eliminada com sucesso!", ["success" => true]);
+        $user_deactivate  = $user->set_active($email, $active);
+        if ($user_deactivate) {
+            echo Response::json(200, "Conta desativada com sucesso!", ["success" => true]);
             exit;
         } else {
-            echo Response::json(200, "Não foi possível eliminar a conta!", ["success" => false]);
+            echo Response::json(200, "Não foi possível desativar a conta!", ["success" => false]);
             exit;
         }
     } else {

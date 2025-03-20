@@ -6,6 +6,7 @@ import HotelChain from "../views/HotelChain";
 import AdminDashboard from "../views/AdminDashboard";
 import Login from "../views/Login";
 import Register from "../views/Register";
+import Logout from "../views/Logout";
 import ProtectedLayout from "./ProtectedLayout";
 
 function Router() {
@@ -20,6 +21,7 @@ function Router() {
           <Route path="/admin/dashboard" element={<AdminDashboard />} />
           <Route path="/admin/login" element={<Login />} />
           <Route path="/admin/register" element={<Register />} />
+          <Route path="/admin/logout" element={<Logout />} />
         </Route>
       </Routes>
     </BrowserRouter>

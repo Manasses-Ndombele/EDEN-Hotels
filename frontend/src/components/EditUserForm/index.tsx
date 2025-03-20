@@ -10,7 +10,8 @@ function EditUserForm() {
         account_email: "",
         username: "",
         email: "",
-        active: "",
+        old_password: "",
+        new_password: ""
       }}
       validationSchema={validationSchema}
       onSubmit={(values, { setSubmitting, resetForm }) => {
@@ -18,7 +19,8 @@ function EditUserForm() {
         const params = {
           username: values.username,
           email: values.email,
-          active: values.active,
+          old_password: values.old_password,
+          new_password: values.new_password
         };
 
         const token = localStorage.getItem("token");
@@ -77,12 +79,20 @@ function EditUserForm() {
           typeField="input"
         />
         <Input
-          name="active"
-          id="hotel-country-field"
-          placeholder="Selecione um estado"
-          label="Estado"
-          typeField="select"
-          selectOptions={["ATIVADO", "DESATIVADO"]}
+          type="password"
+          label="Senha atual"
+          placeholder="Informe sua senha atual"
+          id="actual-password-field"
+          name="old_password"
+          typeField="input"
+        />
+        <Input
+          type="password"
+          label="Nova senha"
+          placeholder="Informe uma nova senha"
+          id="new-password-field"
+          name="new_password"
+          typeField="input"
         />
         <button type="submit">Atualizar</button>
       </Form>

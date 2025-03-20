@@ -7,9 +7,31 @@ import UserContext from "../../services/UserContext";
 function ReservesTable() {
   const [loading, setLoading] = useState(true);
   const [reservesDatas, setReservesDatas] = useState([]);
+  const [updateTable, setUpdateTable] = useState(false);
   const { loggedIn, user } = useContext(UserContext);
+  const token = localStorage.getItem("token");
+  function deleteReserve(id: number) {
+    api
+      .delete(`/deletar-reserva?id=${id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((response) => {
+        if (response.status === 200 && response.data.success) {
+          console.log(response.data.message);
+          setUpdateTable(true)
+        } else {
+          console.log(`Status: ${response.status}`);
+          console.log(response.data.message);
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+
   useEffect(() => {
-    const token = localStorage.getItem("token");
     if (loggedIn && Object.keys(user).length !== 0 && token !== null) {
       api
         .get("/reservas", {
@@ -22,16 +44,20 @@ function ReservesTable() {
             setReservesDatas(response.data.datas);
             console.log(response.data.message);
             setLoading(false);
+            setUpdateTable(false);
           } else {
             console.log(`Status ${response.status}`);
             console.log(response.data.message);
+            setUpdateTable(false);
           }
         })
         .catch((error) => {
           console.log(error);
+          setUpdateTable(false);
         });
     }
-  }, [loggedIn, user]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [updateTable]);
 
   if (loading) {
     return <div>Carregando reservas...</div>;
@@ -71,7 +97,12 @@ function ReservesTable() {
                   <button type="button">
                     <FaRegPenToSquare />
                   </button>
-                  <button type="button">
+                  <button
+                    type="button"
+                    onClick={() => {
+                      deleteReserve(reserve["id"]);
+                    }}
+                  >
                     <MdDeleteForever />
                   </button>
                 </td>
