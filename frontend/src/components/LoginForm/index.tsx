@@ -7,7 +7,7 @@ import UserContext from "../../services/UserContext";
 import { useNavigate } from "react-router-dom";
 
 function LoginForm() {
-  const { setLoggedIn } = useContext(UserContext);
+  const { setLoggedIn, setUser } = useContext(UserContext);
   const navigate = useNavigate();
 
   return (
@@ -42,6 +42,7 @@ function LoginForm() {
               console.log("Token do backend: ", token, " tipo: ", typeof token);
               localStorage.setItem("token", token);
               setLoggedIn(true);
+              setUser(response.data.user);
               navigate("/admin/dashboard");
             } else {
               console.log(response.data.message);

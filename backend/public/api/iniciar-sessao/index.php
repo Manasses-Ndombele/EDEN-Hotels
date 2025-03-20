@@ -29,7 +29,13 @@
                 $jwt = JWT::encode($payload, SECRET_KEY, "HS256");
                 echo Response::json(200, "Login efetuado com sucesso!", [
                     "success" => true,
-                    "token" => $jwt
+                    "token" => $jwt,
+                    "user" => [
+                        "email" => $resultsQuery["email"],
+                        "username" => $resultsQuery["username"], 
+                        "type" => $resultsQuery["type"],
+                        "created_at" => $resultsQuery["created_at"]
+                    ]
                 ]);
 
                 exit;

@@ -7,8 +7,8 @@ function UsersTable() {
   const [usersDatas, setUsersDatas] = useState([]);
   const { loggedIn, user } = useContext(UserContext);
   const [updateTable, setUpdateTable] = useState(false);
-  const token = localStorage.getItem("token");
   function toggleUserStatus(email: string, active: number) {
+    const token = localStorage.getItem("token");
     const new_status = active === 1 ? 0 : 1;
     api
       .patch(
@@ -35,6 +35,7 @@ function UsersTable() {
   }
 
   function deleteUser(email: string) {
+    const token = localStorage.getItem("token");
     api
       .delete(`/deletar-usuario?email=${email}`, {
         headers: {
@@ -57,6 +58,7 @@ function UsersTable() {
   }
 
   useEffect(() => {
+    const token = localStorage.getItem("token");
     if (loggedIn && Object.keys(user).length !== 0 && token !== null) {
       if (user.type === "SUPER_USER") {
         api
@@ -81,10 +83,13 @@ function UsersTable() {
             console.log(error);
             setUpdateTable(false);
           });
+      } else {
+        console.log("Este usuário não é super usuário!");
       }
+    } else {
+      console.log("Dados de autenticação inválidos")
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [updateTable]);
+  }, [loggedIn, user, updateTable]);
 
   if (loading) {
     return <div>Carregando usuários...</div>;

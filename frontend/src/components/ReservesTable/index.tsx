@@ -9,8 +9,8 @@ function ReservesTable() {
   const [reservesDatas, setReservesDatas] = useState([]);
   const [updateTable, setUpdateTable] = useState(false);
   const { loggedIn, user } = useContext(UserContext);
-  const token = localStorage.getItem("token");
   function deleteReserve(id: number) {
+    const token = localStorage.getItem("token");
     api
       .delete(`/deletar-reserva?id=${id}`, {
         headers: {
@@ -20,7 +20,7 @@ function ReservesTable() {
       .then((response) => {
         if (response.status === 200 && response.data.success) {
           console.log(response.data.message);
-          setUpdateTable(true)
+          setUpdateTable(true);
         } else {
           console.log(`Status: ${response.status}`);
           console.log(response.data.message);
@@ -32,6 +32,7 @@ function ReservesTable() {
   }
 
   useEffect(() => {
+    const token = localStorage.getItem("token");
     if (loggedIn && Object.keys(user).length !== 0 && token !== null) {
       api
         .get("/reservas", {
@@ -55,9 +56,10 @@ function ReservesTable() {
           console.log(error);
           setUpdateTable(false);
         });
+    } else {
+      console.log("Não estamos caindo na condição que executa a requesição");
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [updateTable]);
+  }, [loggedIn, user, updateTable]);
 
   if (loading) {
     return <div>Carregando reservas...</div>;
