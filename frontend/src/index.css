@@ -1,2 +1,73 @@
 @import "tailwindcss";
-@import "leaflet/dist/leaflet.css"
+
+.libre-baskerville-regular {
+  font-family: "Libre Baskerville", serif;
+}
+
+.dm-serif-display-regular {
+  font-family: "DM Serif Display", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.color-a {
+  color: #0f1626;
+}
+.color-b {
+  color: #ab987a;
+}
+.color-ba {
+  color: #ab987a85;
+}
+.color-c {
+  color: #ff533d;
+}
+.color-d {
+  color: #efefef;
+}
+.color-e {
+  color: #f5f5f5;
+}
+.bg-color-a {
+  background-color: #0f1626;
+}
+.bg-color-b {
+  background-color: #ab987a;
+}
+.bg-color-ba {
+  background-color: #ab987a85;
+}
+.bg-color-c {
+  background-color: #ff533d;
+}
+.bg-color-d {
+  background-color: #efefef;
+}
+.bg-color-e {
+  background-color: #f5f5f5;
+}
+
+.border-color {
+  border-color: #f5f5f574;
+}
+
+.shadow-min {
+  text-shadow: 0px 0px 2px #ab987a85;
+}
+
+span.swiper-pagination-bullet {
+  background-color: #ff533d;
+}
+
+div.swiper-button-next::after,
+div.swiper-button-prev::after {
+  color: #ff533d;
+}
+
+.linear-gradient-black {
+  background-image: linear-gradient(to top, #0f1626, transparent);
+}
+
+input#newsletter-email-field {
+  padding: 10px;
+}

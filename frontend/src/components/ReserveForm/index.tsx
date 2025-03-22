@@ -2,7 +2,6 @@ import { Formik, Form } from "formik";
 import api from "../../services/api";
 import validationSchema from "./validationSchema";
 import Input from "../Input";
-import "./index-test.css";
 
 function ReserveForm() {
   return (
@@ -60,12 +59,12 @@ function ReserveForm() {
           });
       }}
     >
-      <Form>
+      <Form className="flex flex-col gap-3" >
         <Input
           name="client_name"
           id="client-name-field"
           placeholder="Seu nome"
-          label="Nome"
+          label="Nome*"
           type="text"
           typeField="input"
         />
@@ -73,7 +72,7 @@ function ReserveForm() {
           name="phonenumber"
           id="phone-number-field"
           placeholder="Seu número de telefone"
-          label="Telefone"
+          label="Telefone*"
           type="text"
           typeField="input"
         />
@@ -81,7 +80,7 @@ function ReserveForm() {
           name="hotel_country"
           id="hotel-country-field"
           placeholder="Selecione um de nossos hotéis"
-          label="Hotel"
+          label="Hotel*"
           typeField="select"
           selectOptions={[
             "França - Paris",
@@ -96,7 +95,7 @@ function ReserveForm() {
           name="start_date"
           id="start-date-field"
           placeholder=""
-          label="Início da estadia"
+          label="Início da estadia*"
           typeField="input"
           type="date"
         />
@@ -104,7 +103,7 @@ function ReserveForm() {
           name="end_date"
           id="end-date-field"
           placeholder=""
-          label="Fim da estadia"
+          label="Fim da estadia*"
           typeField="input"
           type="date"
         />
@@ -116,7 +115,7 @@ function ReserveForm() {
           typeField="textarea"
           type="text"
         />
-        <button type="submit">Enviar</button>
+        <button type="submit" className="w-full p-3 color-d libre-baskerville-regular uppercase font-bold tracking-widest focus:tracking-tight text-lg bg-color-b cursor-pointer mt-3 border-r-4 border-b-4 border-color focus:border-0 transition-all ease-in duration-20">Enviar</button>
       </Form>
     </Formik>
   );

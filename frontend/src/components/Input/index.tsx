@@ -25,7 +25,7 @@ function setField({
     const options = selectOptions ? [placeholder, ...selectOptions] : [placeholder];
 
     return (
-      <Field type={type} id={id} name={name} as="select">
+      <Field type={type} id={id} name={name} as="select" className="italic border-b-[1px] libre-baskerville-regular">
         {options.map((option, index) =>
           index === 0 ? (
             <option key={index} value="" disabled>
@@ -47,6 +47,7 @@ function setField({
         id={id}
         name={name}
         as={typeField}
+        className="italic border-b-[1px] libre-baskerville-regular"
       />
     );
   }
@@ -54,10 +55,10 @@ function setField({
 
 function Input({ type, label, placeholder, id, name, typeField, selectOptions }: InputProps) {
   return (
-    <section>
-      <label htmlFor={id}>{label}</label>
+    <section className="flex flex-col gap-1 mb-3">
+      <label htmlFor={id} className="libre-baskerville-regular font-bold">{label}</label>
       {setField({ type, placeholder, id, name, typeField, selectOptions })}
-      <ErrorMessage name={name} component="span" />
+      <ErrorMessage name={name} component="span" className="text-red-600 libre-baskerville-regular mt-2" />
     </section>
   );
 }

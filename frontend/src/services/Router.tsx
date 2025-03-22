@@ -14,7 +14,7 @@ function Router() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/reservar" element={<Reserve />} />
+        <Route path="/reservas" element={<Reserve />} />
         <Route path="/sobre" element={<About />} />
         <Route path="/rede-de-hoteis" element={<HotelChain />} />
         <Route element={<ProtectedLayout />}>

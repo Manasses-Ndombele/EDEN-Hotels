@@ -2,13 +2,13 @@ import BrandArea from "../BrandArea";
 
 function Header() {
   return (
-    <header>
+    <header className="w-full flex flex-col items-center justify-center p-3 bg-color-a">
       <BrandArea />
-      <nav>
-        <a href="/">Início</a>
-        <a href="/rede-de-hoteis">Rede</a>
-        <a href="/reservar">Reservas</a>
-        <a href="/sobre">Sobre</a>
+      <nav className="w-full flex items-start justify-evenly">
+        <a href="/" className="text-lg libre-baskerville-regular color-d">Início</a>
+        <a href="/rede-de-hoteis" className="text-lg libre-baskerville-regular color-d">Rede</a>
+        <a href="/reservas" className="text-lg libre-baskerville-regular color-d">Reservas</a>
+        <a href="/sobre" className="text-lg libre-baskerville-regular color-d">Sobre</a>
       </nav>
     </header>
   );

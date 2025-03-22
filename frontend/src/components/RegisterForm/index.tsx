@@ -5,7 +5,6 @@ import api from "../../services/api";
 import Input from "../Input";
 import validationSchema from "./validationSchema";
 import UserContext from "../../services/UserContext";
-import "./index-test.css";
 
 function RegisterForm() {
   const { loggedIn, user } = useContext(UserContext);
