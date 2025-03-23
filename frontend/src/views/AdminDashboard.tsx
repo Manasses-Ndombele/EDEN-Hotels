@@ -1,12 +1,10 @@
 import { useContext, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import Header from "../components/Header";
-import BrandArea from "../components/BrandArea";
 import ReservesTable from "../components/ReservesTable";
 import UsersTable from "../components/UsersTable";
 import Footer from "../components/Footer";
 import UserContext from "../services/UserContext";
-import EditUserForm from "../components/EditUserForm";
 import DeleteAccountBtn from "../components/DeleteAccountBtn";
 
 function AdminDashboard() {
@@ -27,17 +25,22 @@ function AdminDashboard() {
   return (
     <>
       <Header />
-      <main>
-        <BrandArea />
-        <p>
+      <main className="p-3">
+        <h2 className="uppercase text-3xl text-center dm-serif-display-regular color-b">Olá, {user.username}</h2>
+        <p className="text-center text-lg libre-baskerville-regular italic">
           Seja bem vindo a área administrativa da EDEN Hotels aqui você poderá
           monitorar as reservas dos clientes
         </p>
         <ReservesTable />
         {user.type === "SUPER_USER" ? <UsersTable /> : null}
-        <EditUserForm />
-        <Link to="/admin/logout">Terminar sessão</Link>
-        <DeleteAccountBtn />
+        <div id="user-account-area" className="mt-5">
+          <h2 className="text-left text-xl uppercase color-b font-bold libre-baskerville-regular py-3">Sua conta</h2>
+          <div id="options-area" className="flex flex-col gap-3">
+            <button type="button" className="border-color-b border-1 py-2 color-b focus:scale-105 transition-all ease-in duration-300 libre-baskerville-regular font-bold uppercase text-center cursor-pointer">Editar dados</button>
+            <Link to="/admin/logout" className="border-color-b border-1 py-2 color-b focus:scale-105 transition-all ease-in duration-300 libre-baskerville-regular font-bold uppercase text-center cursor-pointer">Terminar sessão</Link>
+            <DeleteAccountBtn className="border-color-b border-1 py-2 color-b focus:scale-105 transition-all ease-in duration-300 libre-baskerville-regular font-bold uppercase text-center cursor-pointer" />
+          </div>
+        </div>
       </main>
       <Footer />
     </>

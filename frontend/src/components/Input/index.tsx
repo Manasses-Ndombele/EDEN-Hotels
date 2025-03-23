@@ -56,7 +56,7 @@ function setField({
 function Input({ type, label, placeholder, id, name, typeField, selectOptions }: InputProps) {
   return (
     <section className="flex flex-col gap-1 mb-3">
-      <label htmlFor={id} className="libre-baskerville-regular font-bold">{label}</label>
+      <label htmlFor={id} className="libre-baskerville-regular font-bold cursor-pointer">{label}</label>
       {setField({ type, placeholder, id, name, typeField, selectOptions })}
       <ErrorMessage name={name} component="span" className="text-red-600 libre-baskerville-regular mt-2" />
     </section>

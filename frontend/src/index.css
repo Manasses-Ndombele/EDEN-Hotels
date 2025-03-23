@@ -47,8 +47,12 @@
   background-color: #f5f5f5;
 }
 
-.border-color {
+.border-color-a {
   border-color: #f5f5f574;
+}
+
+.border-color-b {
+  border-color: #ab987a;
 }
 
 .shadow-min {

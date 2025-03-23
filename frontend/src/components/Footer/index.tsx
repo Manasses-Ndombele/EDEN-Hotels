@@ -31,7 +31,7 @@ function Footer() {
                 name="newsletter-email"
                 typeField="input"
               />
-              <button type="submit" className="w-full p-3 text-lg bg-color-b cursor-pointer mt-3 border-r-4 border-b-4 border-color active:border-0 transition-all ease-in duration-200">Submeter</button>
+              <button type="submit" className="w-full p-3 text-lg bg-color-b cursor-pointer mt-3 border-r-4 border-b-4 border-color-a active:border-0 transition-all ease-in duration-200">Submeter</button>
             </Form>
           </Formik>
         </div>

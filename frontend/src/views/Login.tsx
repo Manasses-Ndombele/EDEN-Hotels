@@ -1,5 +1,5 @@
 import { useContext, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import BrandArea from "../components/BrandArea";
 import LoginForm from "../components/LoginForm";
 import UserContext from "../services/UserContext";
@@ -21,15 +21,16 @@ function Login() {
   }, []);
 
   return (
-    <main>
-      <BrandArea />
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint tempore
-        eius aspernatur laborum unde tempora repudiandae provident! Eius iure
-        labore laborum unde fuga necessitatibus sapiente, aspernatur
-        praesentium, nemo temporibus quas!
-      </p>
+    <main className="bg-color-e h-[100vh] max-h-[140vh] mb-30">
+      <div className="bg-color-a p-3">
+        <BrandArea />
+      </div>
+      <div className="my-3 px-3">
+        <h2 className="dm-serif-display-regular text-3xl color-b uppercase text-center">Entrar</h2>
+        <p className="libre-baskerville-regular text-lg color-a italic">Seja bem vindo insira os seus dados de usuário de uma conta autorizada para acessar a área administrativa do EDEN Hotels.</p>
+      </div>
       <LoginForm />
+      <Link to="/admin/register" className="text-center my-4 w-full block color-a font-bold libre-baskerville-regular">Não tem uma conta? Criar</Link>
     </main>
   );
 }

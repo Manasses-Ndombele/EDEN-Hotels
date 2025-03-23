@@ -66,47 +66,53 @@ function ReservesTable() {
   }
 
   return (
-    <div id="reserves-table-area">
+    <div id="reserves-table-area" className="overflow-auto">
       <table>
-        <thead>
+        <caption className="text-left text-xl uppercase color-b font-bold libre-baskerville-regular py-3">Reservas</caption>
+        <thead className="bg-color-a color-e libre-baskerville-regular">
           <tr>
-            <th>Nome</th>
-            <th>Telefone</th>
-            <th>Hospedagem para</th>
-            <th>Início</th>
-            <th>Fim</th>
-            <th>Estado</th>
-            <th>Mensagem</th>
-            <th>Ações</th>
+            <th className="text-left p-2">Nome</th>
+            <th className="text-left p-2">Telefone</th>
+            <th className="whitespace-nowrap text-left p-2">Hospedagem para</th>
+            <th className="text-left p-2">Início</th>
+            <th className="text-left p-2">Fim</th>
+            <th className="text-left p-2">Estado</th>
+            <th className="text-left p-2">Mensagem</th>
+            <th className="text-left py-2 px-4">Ações</th>
           </tr>
         </thead>
         <tbody>
           {reservesDatas.length !== 0 ? (
             reservesDatas.map((reserve, index) => (
               <tr key={index}>
-                <td>{reserve["client_name"]}</td>
-                <td>{reserve["phonenumber"]}</td>
-                <td>{reserve["hotel_country"]}</td>
-                <td>{reserve["start_date"]}</td>
-                <td>{reserve["end_date"]}</td>
-                <td>{reserve["status"]}</td>
-                <td>
-                  {reserve["message"] !== ""
-                    ? reserve["message"]
-                    : "Não informado"}
+                <td className="border-1 p-2 whitespace-nowrap libre-baskerville-regular">{reserve["client_name"]}</td>
+                <td className="border-1 p-2 whitespace-nowrap libre-baskerville-regular">{reserve["phonenumber"]}</td>
+                <td className="border-1 p-2 whitespace-nowrap libre-baskerville-regular">{reserve["hotel_country"]}</td>
+                <td className="border-1 p-2 whitespace-nowrap libre-baskerville-regular">{reserve["start_date"]}</td>
+                <td className="border-1 p-2 whitespace-nowrap libre-baskerville-regular">{reserve["end_date"]}</td>
+                <td className="border-1 p-2 whitespace-nowrap libre-baskerville-regular">{reserve["status"]}</td>
+                <td className="border-1 p-2 whitespace-nowrap libre-baskerville-regular">
+                  <textarea readOnly={true}>
+                    {reserve["message"] !== ""
+                      ? reserve["message"]
+                      : "Não informado"}
+                  </textarea>
                 </td>
-                <td>
-                  <button type="button">
-                    <FaRegPenToSquare />
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => {
-                      deleteReserve(reserve["id"]);
-                    }}
-                  >
-                    <MdDeleteForever />
-                  </button>
+                <td className="border-1 p-2 text-xl">
+                  <section className="flex items-center gap-4 w-full">
+                    <button type="button" className="color-c cursor-pointer">
+                      <FaRegPenToSquare />
+                    </button>
+                    <button
+                      type="button"
+                      className="color-c cursor-pointer"
+                      onClick={() => {
+                        deleteReserve(reserve["id"]);
+                      }}
+                    >
+                      <MdDeleteForever />
+                    </button>
+                  </section>
                 </td>
               </tr>
             ))

@@ -3,7 +3,11 @@ import { useNavigate } from "react-router-dom";
 import api from "../../services/api";
 import UserContext from "../../services/UserContext";
 
-function DeleteAccountBtn() {
+interface Props {
+  className: string
+}
+
+function DeleteAccountBtn({ className }: Props) {
   const { user, setLoggedIn, setUser } = useContext(UserContext);
   const navigate = useNavigate();
   function deleteUser() {
@@ -40,6 +44,7 @@ function DeleteAccountBtn() {
 
   return (
     <button
+      className={className}
       type="button"
       onClick={() => {
         deleteUser();

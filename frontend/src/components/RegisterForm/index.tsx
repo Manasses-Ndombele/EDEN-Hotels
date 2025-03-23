@@ -65,7 +65,7 @@ function RegisterForm() {
           });
       }}
     >
-      <Form>
+      <Form className="px-3 flex flex-col gap-2 mt-3">
         <Input
           type="text"
           label="Usuário"
@@ -90,7 +90,7 @@ function RegisterForm() {
           name="password"
           typeField="input"
         />
-        <button type="submit">Enviar</button>
+        <button type="submit" className="w-full p-3 color-d libre-baskerville-regular uppercase font-bold tracking-widest focus:tracking-tight text-lg bg-color-b cursor-pointer mt-3 border-r-4 border-b-4 border-color-a focus:border-0 transition-all ease-in duration-200">Enviar</button>
       </Form>
     </Formik>
   );

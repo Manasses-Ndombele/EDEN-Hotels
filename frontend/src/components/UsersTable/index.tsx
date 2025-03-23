@@ -96,62 +96,69 @@ function UsersTable() {
   }
 
   return (
-    <table>
-      <thead>
-        <tr>
-          <th>Usuário</th>
-          <th>Email</th>
-          <th>Estado</th>
-          <th>Conta</th>
-          <th>Criado em</th>
-          <th>Ações</th>
-        </tr>
-      </thead>
-      <tbody>
-        {usersDatas.length !== 0 ? (
-          usersDatas.map((users, index) => (
-            <tr key={index}>
-              <td>{users["username"]}</td>
-              <td>{users["email"]}</td>
-              <td>
-                {Number.parseInt(users["active"]) === 1
-                  ? "ACTIVADO"
-                  : "DESATIVADO"}
-              </td>
-              <td>{users["type"]}</td>
-              <td>{users["created_at"]}</td>
-              <td>
-                <button
-                  type="button"
-                  onClick={() => {
-                    toggleUserStatus(
-                      users["email"],
-                      Number.parseInt(users["active"])
-                    );
-                  }}
-                >
-                  {Number.parseInt(users["active"]) === 1
-                    ? "Desativar conta"
-                    : "Ativar conta"}
-                </button>
-                <button
-                  type="button"
-                  onClick={() => {
-                    deleteUser(users["email"]);
-                  }}
-                >
-                  Eliminar conta
-                </button>
-              </td>
-            </tr>
-          ))
-        ) : (
-          <tr key="1">
-            <td colSpan={5}>Não foi registrado nenhum usuário!</td>
+    <div id="users-table-area" className="overflow-auto mt-5">
+      <table>
+        <caption className="text-left text-xl uppercase color-b font-bold libre-baskerville-regular py-3">Contas administrativas</caption>
+        <thead className="bg-color-a color-e libre-baskerville-regular">
+          <tr>
+            <th className="text-left p-2">Usuário</th>
+            <th className="text-left p-2">Email</th>
+            <th className="text-left p-2">Estado</th>
+            <th className="text-left p-2">Conta</th>
+            <th className="whitespace-nowrap text-left p-2">Criado em</th>
+            <th className="text-left p-2">Ações</th>
           </tr>
-        )}
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          {usersDatas.length !== 0 ? (
+            usersDatas.map((users, index) => (
+              <tr key={index}>
+                <td className="border-1 p-2 whitespace-nowrap libre-baskerville-regular">{users["username"]}</td>
+                <td className="border-1 p-2 whitespace-nowrap libre-baskerville-regular">{users["email"]}</td>
+                <td className="border-1 p-2 whitespace-nowrap libre-baskerville-regular">
+                  {Number.parseInt(users["active"]) === 1
+                    ? "ACTIVADO"
+                    : "DESATIVADO"}
+                </td>
+                <td className="border-1 p-2 whitespace-nowrap libre-baskerville-regular">{users["type"]}</td>
+                <td className="border-1 p-2 whitespace-nowrap libre-baskerville-regular">{users["created_at"]}</td>
+                <td className="border-1 p-2 whitespace-nowrap libre-baskerville-regular">
+                  <section className="flex items-center gap-4">
+                    <button
+                      type="button"
+                      className="uppercase font-bold color-c"
+                      onClick={() => {
+                        toggleUserStatus(
+                          users["email"],
+                          Number.parseInt(users["active"])
+                        );
+                      }}
+                    >
+                      {Number.parseInt(users["active"]) === 1
+                        ? "Desativar conta"
+                        : "Ativar conta"}
+                    </button>
+                    <button
+                      type="button"
+                      className="uppercase font-bold color-c"
+                      onClick={() => {
+                        deleteUser(users["email"]);
+                      }}
+                    >
+                      Eliminar conta
+                    </button>
+                  </section>
+                </td>
+              </tr>
+            ))
+          ) : (
+            <tr key="1">
+              <td colSpan={5}>Não foi registrado nenhum usuário!</td>
+            </tr>
+          )}
+        </tbody>
+      </table>
+    </div>
   );
 }
 

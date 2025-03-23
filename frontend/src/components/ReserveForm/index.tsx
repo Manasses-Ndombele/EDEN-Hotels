@@ -115,7 +115,7 @@ function ReserveForm() {
           typeField="textarea"
           type="text"
         />
-        <button type="submit" className="w-full p-3 color-d libre-baskerville-regular uppercase font-bold tracking-widest focus:tracking-tight text-lg bg-color-b cursor-pointer mt-3 border-r-4 border-b-4 border-color focus:border-0 transition-all ease-in duration-20">Enviar</button>
+        <button type="submit" className="w-full p-3 color-d libre-baskerville-regular uppercase font-bold tracking-widest focus:tracking-tight text-lg bg-color-b cursor-pointer mt-3 border-r-4 border-b-4 border-color-a focus:border-0 transition-all ease-in duration-20">Enviar</button>
       </Form>
     </Formik>
   );
