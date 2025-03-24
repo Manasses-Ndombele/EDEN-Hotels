@@ -4,10 +4,10 @@ import { EffectFlip, Autoplay, Pagination, A11y } from "swiper/modules";
 import maid1 from "../../assets/camareira-1.jpg";
 import maid2 from "../../assets/camareira-2.jpg";
 import maid3 from "../../assets/camareira-3.jpg";
-import "swiper/css";
-import "swiper/css/pagination";
-import "swiper/css/autoplay";
-import "swiper/css/effect-flip";
+import "swiper/css.css";
+import "swiper/css/pagination.css";
+import "swiper/css/autoplay.css";
+import "swiper/css/effect-flip.css";
 
 function RoomServiceArea() {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);

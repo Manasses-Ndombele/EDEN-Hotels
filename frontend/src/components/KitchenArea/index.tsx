@@ -5,9 +5,9 @@ import chef1 from "../../assets/Chefes-1.jpeg";
 import chef2 from "../../assets/Chefes-2.jpg";
 import chef3 from "../../assets/Chefes-3.jpg";
 import chef4 from "../../assets/Chefes-4.jpg";
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/effect-cards";
+import "swiper/css/css.css";
+import "swiper/css/navigation.css";
+import "swiper/css/effect-cards.css";
 
 function KitchenArea() {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
