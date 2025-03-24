@@ -31,20 +31,20 @@ function AdminDashboard() {
         <h2 className="uppercase text-3xl text-center dm-serif-display-regular color-b">
           Olá, {user.username}
         </h2>
-        <p className="text-center text-lg libre-baskerville-regular italic">
+        <p className="text-center text-lg libre-baskerville-regular italic md:w-[70%] md:mx-auto">
           Seja bem vindo a área administrativa da EDEN Hotels aqui você poderá
           monitorar as reservas dos clientes
         </p>
         <ReservesTable />
         {user.type === "SUPER_USER" ? <UsersTable /> : null}
         <div id="user-account-area" className="mt-5">
-          <h2 className="text-left text-xl uppercase color-b font-bold libre-baskerville-regular py-3">
+          <h2 className="text-left text-xl uppercase color-b font-bold libre-baskerville-regular py-3 md:text-center">
             Sua conta
           </h2>
-          <div id="options-area" className="flex flex-col gap-3">
+          <div id="options-area" className="flex flex-col gap-3 md:flex-row md:justify-center">
             <button
               type="button"
-              className="border-color-b border-1 py-2 color-b focus:scale-105 transition-all ease-in duration-300 libre-baskerville-regular font-bold uppercase text-center cursor-pointer"
+              className="border-color-b border-1 max-w-[250px] py-2 color-b focus:scale-105 transition-all ease-in duration-300 libre-baskerville-regular font-bold uppercase text-center cursor-pointer md:px-8"
               onClick={() => {
                 setModalUserStatus(true);
               }}
@@ -53,11 +53,11 @@ function AdminDashboard() {
             </button>
             <Link
               to="/admin/logout"
-              className="border-color-b border-1 py-2 color-b focus:scale-105 transition-all ease-in duration-300 libre-baskerville-regular font-bold uppercase text-center cursor-pointer"
+              className="border-color-b border-1 max-w-[250px] py-2 color-b focus:scale-105 transition-all ease-in duration-300 libre-baskerville-regular font-bold uppercase text-center cursor-pointer md:px-8"
             >
               Terminar sessão
             </Link>
-            <DeleteAccountBtn className="border-color-b border-1 py-2 color-b focus:scale-105 transition-all ease-in duration-300 libre-baskerville-regular font-bold uppercase text-center cursor-pointer" />
+            <DeleteAccountBtn className="border-color-b max-w-[250px] border-1 py-2 color-b focus:scale-105 transition-all ease-in duration-300 libre-baskerville-regular font-bold uppercase text-center cursor-pointer md:px-8" />
           </div>
         </div>
       </main>

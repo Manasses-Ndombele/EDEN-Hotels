@@ -85,7 +85,7 @@ function ReservesTable() {
   }
 
   return (
-    <div id="reserves-table-area" className="overflow-auto max-h-[30rem]">
+    <div id="reserves-table-area" className="overflow-auto max-h-[30rem] md:mt-10">
       <table>
         <caption className="text-left text-xl uppercase color-b font-bold libre-baskerville-regular py-3">
           Reservas

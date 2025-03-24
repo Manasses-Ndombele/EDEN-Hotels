@@ -17,7 +17,7 @@ function DatasArea() {
           <GoStarFill className="text-amber-300 text-xl" />
           <GoStarFill className="text-amber-300 text-xl" />
         </section>
-        <div id="feedback-description" className="color-c px-5 py-4">
+        <div id="feedback-description" className="color-c px-5 py-4 mx-auto max-w-[500px] md:w-[60%]">
           <RiDoubleQuotesL className="inline text-3xl" />
           <span className="text-base libre-baskerville-regular">
             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cum
@@ -28,7 +28,7 @@ function DatasArea() {
         </div>
         <div
           id="results-area"
-          className="color-e grid grid-cols-2 gap-2 justify-content-center items-center px-3"
+          className="color-e grid grid-cols-2 gap-2 justify-content-center items-center px-3 mx-auto max-w-[500px] md:w-[60%]"
         >
           <section>
             <p className="flex items-center gap-2">

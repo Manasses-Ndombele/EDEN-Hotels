@@ -9,8 +9,8 @@ function About() {
   return (
     <>
       <Header />
-      <main>
-        <video autoPlay={true} loop={true} muted={true} controls={true} >
+      <main className="bg-color-e">
+        <video autoPlay={true} muted={true} controls={true} className="max-h-[300px] w-full bg-color-ba" >
           <source src={HotelVideo} type="video/mp4" />
         </video>
         <HistoryArea />

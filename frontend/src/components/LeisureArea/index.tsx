@@ -9,40 +9,42 @@ import leisure4 from "../../assets/piscina.jpg";
 function LeisureArea() {
   return (
     <div id="leisure-area" className="bg-color-e">
-      <h2 className="dm-serif-display-regular color-b text-3xl text-center uppercase px-2">
-        Atividades de lazer e lindas vistas
-      </h2>
-      <p className="libre-baskerville-regular italic color-a text-center px-3 py-2 mb-5">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla rem
-        dolores modi voluptatem tempora eum molestias cumque laborum neque
-        possimus dolore consequuntur accusamus suscipit, soluta iusto,
-        necessitatibus vel quod porro.
-      </p>
+      <div className="md:w-[70%] max-w-[600px] mx-auto">
+        <h2 className="dm-serif-display-regular color-b text-3xl text-center uppercase px-2">
+          Atividades de lazer e lindas vistas
+        </h2>
+        <p className="libre-baskerville-regular italic color-a text-center px-3 py-2 mb-5">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla rem
+          dolores modi voluptatem tempora eum molestias cumque laborum neque
+          possimus dolore consequuntur accusamus suscipit, soluta iusto,
+          necessitatibus vel quod porro.
+        </p>
+      </div>
       <div id="leisure-area-container">
         <h3 className="libre-baskerville-regular uppercase text-center text-2xl font-bold color-a my-3 italic">
           Lazer
         </h3>
-        <div id="gallery" className="mb-15">
+        <div id="gallery" className="mb-15 md:grid md:grid-cols-2 mx-auto max-w-[500px] md:max-w-[90%]">
           <div className="card-img relative">
-            <img src={leisure1} alt="Hidromassagem" />
+            <img src={leisure1} className="md:h-full md:w-full md:object-cover max-h-[300px] w-full object-cover object-bottom" alt="Hidromassagem" />
             <span className="absolute bottom-0 left-0 libre-baskerville-regular uppercase font-bold text-lg p-4 color-e w-full h-25 text-end flex items-end linear-gradient-black">
               Hidromassagem
             </span>
           </div>
           <div className="card-img relative">
-            <img src={leisure2} alt="Ioga" />
+            <img src={leisure2} className="md:h-full md:w-full md:object-cover max-h-[300px] w-full object-cover" alt="Ioga" />
             <span className="absolute bottom-0 left-0 libre-baskerville-regular uppercase font-bold text-lg p-4 color-e w-full h-25 text-end flex items-end linear-gradient-black">
               Ioga
             </span>
           </div>
           <div className="card-img relative">
-            <img src={leisure3} alt="Massagem relaxante" />
+            <img src={leisure3} className="md:h-full md:w-full md:object-cover max-h-[300px] w-full object-cover" alt="Massagem relaxante" />
             <span className="absolute bottom-0 left-0 libre-baskerville-regular uppercase font-bold text-lg p-4 color-e w-full h-25 text-end flex items-end linear-gradient-black">
               Massagem relaxante
             </span>
           </div>
           <div className="card-img relative">
-            <img src={leisure4} alt="Piscina" />
+            <img src={leisure4} className="md:h-full md:w-full md:object-cover max-h-[300px] w-full object-cover object-bottom" alt="Piscina" />
             <span className="absolute bottom-0 left-0 libre-baskerville-regular uppercase font-bold text-lg p-4 color-e w-full h-25 text-end flex items-end linear-gradient-black">
               Piscina
             </span>
@@ -53,21 +55,21 @@ function LeisureArea() {
         <h3 className="libre-baskerville-regular uppercase text-center text-2xl font-bold color-a my-3 italic">
           Vistas
         </h3>
-        <div id="gallery">
+        <div id="gallery" className="md:grid md:grid-cols-2 md:w-[90%] mx-auto max-w-[500px] md:max-w-[90%]">
           <div className="card-img relative">
-            <img src={hotelView1} alt="Vista do EDEN Hotels" />
+            <img src={hotelView1} className="md:h-full md:w-full md:object-cover max-h-[300px] w-full object-cover object-bottom" alt="Vista do EDEN Hotels" />
             <span className="absolute bottom-0 left-0 libre-baskerville-regular uppercase font-bold text-lg p-4 color-e w-full h-25 text-end flex items-end linear-gradient-black">
               Vista para a cidade
             </span>
           </div>
           <div className="card-img relative">
-            <img src={hotelView2} alt="Vista do EDEN Hotels" />
+            <img src={hotelView2} className="md:h-full md:w-full md:object-cover max-h-[300px] w-full object-cover object-bottom" alt="Vista do EDEN Hotels" />
             <span className="absolute bottom-0 left-0 libre-baskerville-regular uppercase font-bold text-lg p-4 color-e w-full h-25 text-end flex items-end linear-gradient-black">
-              Vista para as florestas
+              Vista para o mar
             </span>
           </div>
-          <div className="card-img relative">
-            <img src={hotelView3} alt="Vista do EDEN Hotels" />
+          <div className="card-img relative md:col-span-2">
+            <img src={hotelView3} className="md:h-[20rem] md:w-full md:object-cover max-h-[300px] w-full object-cover object-bottom" alt="Vista do EDEN Hotels" />
             <span className="absolute bottom-0 left-0 libre-baskerville-regular uppercase font-bold text-lg p-4 color-e w-full h-25 text-end flex items-end linear-gradient-black">
               Vista para as florestas
             </span>

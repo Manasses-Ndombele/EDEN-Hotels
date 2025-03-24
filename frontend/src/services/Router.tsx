@@ -1,6 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "../views/Home";
-import Reserve from "../views/Reserve";
+import Reserves from "../views/Reserves";
 import About from "../views/About";
 import HotelChain from "../views/HotelChain";
 import AdminDashboard from "../views/AdminDashboard";
@@ -14,7 +14,7 @@ function Router() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/reservas" element={<Reserve />} />
+        <Route path="/reservas" element={<Reserves />} />
         <Route path="/sobre" element={<About />} />
         <Route path="/rede-de-hoteis" element={<HotelChain />} />
         <Route element={<ProtectedLayout />}>
