@@ -27,19 +27,15 @@ function RegisterForm() {
         const params = {
           username: values.username,
           email: values.email,
-          password: values.password
-        }
+          password: values.password,
+        };
 
         api
-          .post(
-            "/criar-usuario",
-            new URLSearchParams(params).toString(),
-            {
-              headers: {
-                "Content-Type": "application/x-www-form-urlencoded"
-              }
-            }
-          )
+          .post("/criar-usuario", new URLSearchParams(params).toString(), {
+            headers: {
+              "Content-Type": "application/x-www-form-urlencoded",
+            },
+          })
           .then((response) => {
             if (response.status === 200) {
               if (response.data.success) {
@@ -54,11 +50,11 @@ function RegisterForm() {
             } else {
               console.log(`Status: ${response.status}`);
               console.log(response.data.message);
-              console.log(response.data.errors)
+              console.log(response.data.errors);
             }
           })
           .catch((error) => {
-            console.log(error)
+            console.log(error);
           })
           .finally(() => {
             setSubmitting(false);
@@ -90,7 +86,12 @@ function RegisterForm() {
           name="password"
           typeField="input"
         />
-        <button type="submit" className="w-full p-3 color-d libre-baskerville-regular uppercase font-bold tracking-widest focus:tracking-tight text-lg bg-color-b cursor-pointer mt-3 border-r-4 border-b-4 border-color-a focus:border-0 transition-all ease-in duration-200">Enviar</button>
+        <button
+          type="submit"
+          className="w-full p-3 color-d libre-baskerville-regular uppercase font-bold tracking-widest focus:tracking-tight text-lg bg-color-b cursor-pointer mt-3 border-r-4 border-b-4 border-color-a focus:border-0 transition-all ease-in duration-200"
+        >
+          Enviar
+        </button>
       </Form>
     </Formik>
   );

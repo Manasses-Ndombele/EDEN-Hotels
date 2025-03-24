@@ -1,32 +1,39 @@
+import { useContext } from "react";
 import { Formik, Form } from "formik";
 import Input from "../Input";
 import validationSchema from "./validationSchema";
 import api from "../../services/api";
+import UserContext from "../../services/UserContext";
+import ModalUserContext from "../../services/ModalUser";
+import ModalContext from "../../services/ModalContext";
 
 function EditUserForm() {
+  const { user } = useContext(UserContext);
+  const { setModalUserStatus } = useContext(ModalUserContext);
+  const { setModalStatus, setModalTitle, setModalMessage } = useContext(ModalContext);
   return (
     <Formik
       initialValues={{
-        account_email: "",
         username: "",
         email: "",
         old_password: "",
-        new_password: ""
+        new_password: "",
       }}
       validationSchema={validationSchema}
       onSubmit={(values, { setSubmitting, resetForm }) => {
         setSubmitting(true);
+        console.log("Submetendo o formulário!");
         const params = {
           username: values.username,
           email: values.email,
           old_password: values.old_password,
-          new_password: values.new_password
+          new_password: values.new_password,
         };
 
         const token = localStorage.getItem("token");
         api
           .patch(
-            `/editar-usuario?email=${values.account_email}`,
+            `/editar-usuario?email=${user.email}`,
             new URLSearchParams(params).toString(),
             {
               headers: {
@@ -36,36 +43,44 @@ function EditUserForm() {
             }
           )
           .then((response) => {
+            console.log(response);
             if (response.status === 200 && response.data.success) {
-              console.log("Usuário atualizado com sucesso!");
-              console.log(response.data.message);
               resetForm();
+              setModalUserStatus(false);
+              setModalTitle("Sucesso!");
+              setModalMessage(response.data.message);
+              setModalStatus(true);
             } else {
-              console.log(`Status: ${response.status}`);
-              console.log(response.data.message);
+              setModalUserStatus(false);
+              setModalTitle(response.data.message);
+              setModalMessage(
+                "Não foi possível atualizar a sua conta por enquanto, tente novamente mais tarde!"
+              );
+
+              setModalStatus(true);
             }
           })
           .catch((error) => {
             console.log(error);
+            setModalUserStatus(false);
+            setModalTitle("Erro inesperado!");
+            setModalMessage(
+              "Um erro não identificado impediu a atualização da sua conta tente novamente mais tarde ou recarregue a página e reenvie o formulário!"
+            );
+
+            setModalStatus(true);
           })
           .finally(() => {
             setSubmitting(false);
+            console.log("Formulário submetido com sucesso!");
           });
       }}
     >
-      <Form>
-        <Input
-          type="text"
-          label="Conta"
-          placeholder="Informe o email do usuário"
-          id="account-email-field"
-          name="account_email"
-          typeField="input"
-        />
+      <Form className="mt-3">
         <Input
           type="text"
           label="Usuário"
-          placeholder="Informe um nome de usuário"
+          placeholder="Novo nome de usuário"
           id="username-field"
           name="username"
           typeField="input"
@@ -73,7 +88,7 @@ function EditUserForm() {
         <Input
           type="email"
           label="Email"
-          placeholder="Informe um email"
+          placeholder="Novo email"
           id="email-field"
           name="email"
           typeField="input"
@@ -94,7 +109,12 @@ function EditUserForm() {
           name="new_password"
           typeField="input"
         />
-        <button type="submit">Atualizar</button>
+        <button
+          type="submit"
+          className="w-full mt-2 border-color-b border-1 py-2 color-b focus:scale-105 transition-all ease-in duration-300 libre-baskerville-regular font-bold uppercase text-center cursor-pointer"
+        >
+          Atualizar
+        </button>
       </Form>
     </Formik>
   );

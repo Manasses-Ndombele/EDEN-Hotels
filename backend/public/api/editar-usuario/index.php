@@ -62,7 +62,7 @@
                     exit;
                 }
             } else {
-                echo Response::json(200, "Não foi possível atualizar a conta!", ["success" => false]);
+                echo Response::json(200, "Erro inesperado!", ["success" => false]);
                 exit;
             }
         }

@@ -48,10 +48,10 @@
         $user = new Users();
         $user_deactivate  = $user->set_active($email, $active);
         if ($user_deactivate) {
-            echo Response::json(200, "Conta desativada com sucesso!", ["success" => true]);
+            echo Response::json(200, "Sucesso!", ["success" => true]);
             exit;
         } else {
-            echo Response::json(200, "Não foi possível desativar a conta!", ["success" => false]);
+            echo Response::json(200, "Erro inesperado!", ["success" => false]);
             exit;
         }
     } else {

@@ -31,6 +31,9 @@
 .bg-color-a {
   background-color: #0f1626;
 }
+.bg-color-ab {
+  background-color: #0f1626b9;
+}
 .bg-color-b {
   background-color: #ab987a;
 }
@@ -74,4 +77,14 @@ div.swiper-button-prev::after {
 
 input#newsletter-email-field {
   padding: 10px;
+}
+
+div#modal-overlay.deactivated,
+div#modal-user-overlay.deactivated {
+  display: none;
+}
+
+div#modal-overlay.activated,
+div#modal-user-overlay.activated {
+  display: flex;
 }

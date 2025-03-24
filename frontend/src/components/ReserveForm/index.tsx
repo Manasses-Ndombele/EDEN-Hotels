@@ -1,9 +1,12 @@
+import { useContext } from "react";
 import { Formik, Form } from "formik";
 import api from "../../services/api";
 import validationSchema from "./validationSchema";
 import Input from "../Input";
+import ModalContext from "../../services/ModalContext";
 
 function ReserveForm() {
+  const { setModalStatus, setModalTitle, setModalMessage } = useContext(ModalContext);
   return (
     <Formik
       initialValues={{
@@ -37,18 +40,21 @@ function ReserveForm() {
             console.log(response.status);
             if (response.status === 200) {
               if (response.data.success) {
-                console.log(response.data.message);
-                console.log(
-                  `Reserva criada com sucesso! ID: ${response.data.reserve_id}`
+                setModalTitle(`${response.data.message}, ${values.client_name}!`);
+                setModalMessage(
+                  "A sua reserva foi registrada com sucesso! Estaremos prontos e ansiosos para recebê-lo na data marcada! Agredecemos por sua reserva."
                 );
 
                 resetForm();
+                setModalStatus(true);
               } else {
-                console.log(response.data.message);
+                setModalTitle(response.data.message);
+                setModalMessage(
+                  "Não foi possível cadastrar a reserva tente novamente mais tarde ou recarregue a página e envie os dados da sua reserva novamente!"
+                );
+          
+                setModalStatus(true);
               }
-            } else {
-              console.log(response.status);
-              console.log(response.data.message);
             }
           })
           .catch((error) => {
@@ -59,7 +65,7 @@ function ReserveForm() {
           });
       }}
     >
-      <Form className="flex flex-col gap-3" >
+      <Form className="flex flex-col gap-3">
         <Input
           name="client_name"
           id="client-name-field"
@@ -115,7 +121,12 @@ function ReserveForm() {
           typeField="textarea"
           type="text"
         />
-        <button type="submit" className="w-full p-3 color-d libre-baskerville-regular uppercase font-bold tracking-widest focus:tracking-tight text-lg bg-color-b cursor-pointer mt-3 border-r-4 border-b-4 border-color-a focus:border-0 transition-all ease-in duration-20">Enviar</button>
+        <button
+          type="submit"
+          className="w-full p-3 color-d libre-baskerville-regular uppercase font-bold tracking-widest focus:tracking-tight text-lg bg-color-b cursor-pointer mt-3 border-r-4 border-b-4 border-color-a focus:border-0 transition-all ease-in duration-20"
+        >
+          Enviar
+        </button>
       </Form>
     </Formik>
   );

@@ -35,10 +35,10 @@
         $user = new Users();
         $user_delete = $user->delete_user($email);
         if ($user_delete) {
-            echo Response::json(200, "Conta eliminada com sucesso!", ["success" => true]);
+            echo Response::json(200, "Sucesso!", ["success" => true]);
             exit;
         } else {
-            echo Response::json(200, "Não foi possível eliminar a conta!", ["success" => false]);
+            echo Response::json(200, "Erro inesperado!", ["success" => false]);
             exit;
         }
     } else {

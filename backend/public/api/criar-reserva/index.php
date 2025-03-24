@@ -43,14 +43,14 @@
             );
 
             if ($queryResult["success"]) {
-                echo Response::json(200, "Reserva criada com sucesso!", [
+                echo Response::json(200, "Parabéns", [
                     "success" => true,
                     "reserve_id" => $queryResult["id"]
                 ]);
 
                 exit;
             } else {
-                echo Response::json(200, "Não foi possível cadastrar a reserva! Tente mais tarde.", [
+                echo Response::json(200, "Erro inesperado!", [
                     "success" => false,
                     "error" => $queryResult["error"]
                 ]);

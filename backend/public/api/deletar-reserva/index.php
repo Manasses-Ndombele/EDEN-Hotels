@@ -27,10 +27,10 @@
         $reserve = new Reserves();
         $reserve_delete = $reserve->delete_reserve($id);
         if ($reserve_delete) {
-            echo Response::json(200, "Reserva eliminada com sucesso!", ["success" => true]);
+            echo Response::json(200, "Sucesso!", ["success" => true]);
             exit;
         } else {
-            echo Response::json(200, "Uma reserva não pode ser eliminada a não ser que seja do estado expirado", ["success" => false]);
+            echo Response::json(200, "Permissão negada!", ["success" => false]);
             exit;
         }
     } else {
