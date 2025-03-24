@@ -143,8 +143,8 @@ function UsersTable() {
 
   return (
     <div id="users-table-area" className="overflow-auto mt-5 max-h-[30rem] md:mt-10">
-      <table>
-        <caption className="text-left text-xl uppercase color-b font-bold libre-baskerville-regular py-3">
+      <table className="xl:mx-auto">
+        <caption className="text-left text-xl uppercase color-b font-bold libre-baskerville-regular py-3 xl:text-center">
           Contas administrativas
         </caption>
         <thead className="bg-color-a color-e libre-baskerville-regular">

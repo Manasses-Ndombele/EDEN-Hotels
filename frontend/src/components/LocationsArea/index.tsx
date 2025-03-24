@@ -15,7 +15,7 @@ function LocationsArea() {
           cumque, aliquam
         </p>
       </div>
-      <div id="locations-container" className="my-5 md:grid md:grid-cols-2 md:max-w-[90%] mx-auto max-w-[600px]">
+      <div id="locations-container" className="my-5 md:grid md:grid-cols-2 md:max-w-[90%] mx-auto max-w-[600px] lg:max-w-[80%] xl:max-w-[70%]">
         <div className="card-img relative">
           <img src={location1} className="h-[20rem] object-cover w-full" alt="EDEN Hotel em Paris" />
           <span className="absolute bottom-0 left-0 h-25 uppercase libre-baskerville-regular color-e p-2 font-bold flex items-end text-lg linear-gradient-black w-full">Paris - França</span>

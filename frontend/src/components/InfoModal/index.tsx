@@ -32,7 +32,7 @@ function InfoModal() {
         modalStatus ? "activated" : "deactivated"
       } fixed bottom-0 start-0 w-screen h-screen bg-color-ab items-center px-3`}
     >
-      <div id="modal-content" className="bg-color-d p-5 w-full">
+      <div id="modal-content" className="bg-color-d p-5 w-full max-w-[400px] mx-auto">
         <div id="modal-header" className="flex justify-content-between">
           <h3 className="w-full text-lg font-bold libre-baskerville-regular color-b uppercase">
             {modalTitle}

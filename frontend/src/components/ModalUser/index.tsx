@@ -19,7 +19,7 @@ function ModalUser() {
         modalUserStatus ? "activated" : "deactivated"
       } fixed bottom-0 start-0 w-screen h-screen bg-color-ab items-center px-3`}
     >
-      <div id="modal-user-content" className="bg-color-d p-5 w-full">
+      <div id="modal-user-content" className="bg-color-d p-5 w-full mx-auto max-w-[400px]">
         <div id="modal-header" className="flex justify-content-between">
           <h3 className="w-full text-lg font-bold libre-baskerville-regular color-b uppercase">
             Atualizar conta

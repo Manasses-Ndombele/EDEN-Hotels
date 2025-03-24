@@ -31,7 +31,7 @@ function AdminDashboard() {
         <h2 className="uppercase text-3xl text-center dm-serif-display-regular color-b">
           Olá, {user.username}
         </h2>
-        <p className="text-center text-lg libre-baskerville-regular italic md:w-[70%] md:mx-auto">
+        <p className="text-center text-lg libre-baskerville-regular italic md:w-[70%] md:mx-auto lg:w-[50%]">
           Seja bem vindo a área administrativa da EDEN Hotels aqui você poderá
           monitorar as reservas dos clientes
         </p>

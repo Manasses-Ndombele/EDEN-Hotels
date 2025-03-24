@@ -26,7 +26,10 @@ function KitchenArea() {
           incidunt dolores deserunt dolore.
         </p>
       </div>
-      <div id="kitchen-area-container" className="p-5 overflow-hidden px-8 md:max-w-[800px] md:mx-auto">
+      <div
+        id="kitchen-area-container"
+        className="p-5 overflow-hidden px-8 md:max-w-[800px] md:mx-auto lg:max-w-[90%] xl:max-w-[80%]"
+      >
         <Swiper
           modules={
             isMobile ? [EffectCards, Navigation, A11y] : [Navigation, A11y]
@@ -39,6 +42,10 @@ function KitchenArea() {
           breakpoints={{
             768: {
               slidesPerView: 2,
+            },
+            1024: {
+              slidesPerView: 3,
+              spaceBetween: 20,
             },
           }}
           onSlideChange={() => {

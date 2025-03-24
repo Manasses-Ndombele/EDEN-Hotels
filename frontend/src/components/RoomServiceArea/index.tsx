@@ -66,7 +66,7 @@ function RoomServiceArea() {
         ) : (
           <div
             id="maids-container"
-            className="md:flex md:items-center md:justify-center md:gap-3"
+            className="md:flex md:items-center md:justify-center md:gap-3 lg:gap-5 xl:max-w-80%"
           >
             <img
               src={maid1}
@@ -75,7 +75,7 @@ function RoomServiceArea() {
             />
             <img
               src={maid2}
-              className="w-100 h-90 object-cover"
+              className="w-100 h-90 object-cover lg:scale-105"
               alt="Camareira da EDEN Hotels"
             />
             <img
