@@ -1,6 +1,6 @@
 import { createContext } from "react";
 
-interface User {
+export interface UserType {
   email: string;
   username: string;
   type: string;
@@ -10,12 +10,12 @@ interface User {
 const UserContext = createContext<{
   loggedIn: boolean;
   setLoggedIn: (loggedIn: boolean) => void;
-  user: User;
-  setUser: (user: object) => void;
+  user: UserType;
+  setUser: (user: UserType) => void;
 }>({
   loggedIn: false,
   setLoggedIn: () => {},
-  user: {} as User,
+  user: {} as UserType,
   setUser: () => {},
 });
 

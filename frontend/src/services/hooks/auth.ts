@@ -1,8 +1,15 @@
 import { useState, useEffect } from "react";
 import api from "../api";
+import { UserType } from "../UserContext";
 
 function useAuth() {
-  const [user, setUser] = useState<object>({});
+  const [user, setUser] = useState<UserType>({
+    username: "",
+    email: "",
+    type: "",
+    created_at: "",
+  });
+
   useEffect(() => {
     const token = localStorage.getItem("token");
     console.log("Token encontrado na memória: ", token);
@@ -34,14 +41,24 @@ function useAuth() {
             }
 
             localStorage.removeItem("token");
-            setUser({});
+            setUser({
+              username: "",
+              email: "",
+              type: "",
+              created_at: "",
+            });
           }
         })
-        .catch ((error) => {
+        .catch((error) => {
           console.log(error);
           localStorage.removeItem("token");
-          setUser({});
-        })
+          setUser({
+            username: "",
+            email: "",
+            type: "",
+            created_at: "",
+          });
+        });
     }
   }, []);
 
