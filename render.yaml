@@ -4,7 +4,7 @@ services:
     env: docker
     image: mysql:8.0
     envVars:
-      - fromEnvFile: .env
+      - fromEnvFile: ./backend/.env
     disk:
       name: db-storage
       mountPath: /var/lib/mysql
@@ -13,9 +13,9 @@ services:
   - name: php
     type: web
     env: docker
-    dockerfilePath: ./Dockerfile
+    dockerfilePath: ./backend/Dockerfile
     envVars:
-      - fromEnvFile: .env
+      - fromEnvFile: ./backend/.env
     dependsOn:
       - db
     disk:
