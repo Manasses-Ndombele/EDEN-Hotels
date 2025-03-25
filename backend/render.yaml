@@ -1,0 +1,24 @@
+services:
+  - name: db
+    type: privateService
+    env: docker
+    image: mysql:8.0
+    envVars:
+      - fromEnvFile: .env
+    disk:
+      name: db-storage
+      mountPath: /var/lib/mysql
+      sizeGB: 1
+
+  - name: php
+    type: web
+    env: docker
+    dockerfilePath: ./Dockerfile
+    envVars:
+      - fromEnvFile: .env
+    dependsOn:
+      - db
+    disk:
+      name: php-storage
+      mountPath: /var/www/html
+      sizeGB: 1
