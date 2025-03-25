@@ -1,20 +1,12 @@
-import { useState, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { A11y, Navigation, EffectCards } from "swiper/modules";
+import { Navigation, A11y } from "swiper/modules";
+import "/node_modules/swiper/swiper-bundle.min.css";
 import chef1 from "../../assets/Chefes-1.jpeg";
 import chef2 from "../../assets/Chefes-2.jpg";
 import chef3 from "../../assets/Chefes-3.jpg";
 import chef4 from "../../assets/Chefes-4.jpg";
-import "swiper/css/css.css";
-import "swiper/css/navigation.css";
-import "swiper/css/effect-cards.css";
 
 function KitchenArea() {
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
-  useEffect(() => {
-    const handleResize = () => setIsMobile(window.innerWidth < 768);
-    window.addEventListener("resize", handleResize);
-  }, []);
   return (
     <div id="kitchen-area" className="bg-color-e pt-7">
       <div className="md:w-[60%] mx-auto max-w-[500px]">
@@ -31,13 +23,10 @@ function KitchenArea() {
         className="p-5 overflow-hidden px-8 md:max-w-[800px] md:mx-auto lg:max-w-[90%] xl:max-w-[80%]"
       >
         <Swiper
-          modules={
-            isMobile ? [EffectCards, Navigation, A11y] : [Navigation, A11y]
-          }
+          modules={[Navigation, A11y]}
           navigation
           spaceBetween={50}
           slidesPerView={1}
-          effect={isMobile ? "cards" : undefined}
           speed={1500}
           breakpoints={{
             768: {

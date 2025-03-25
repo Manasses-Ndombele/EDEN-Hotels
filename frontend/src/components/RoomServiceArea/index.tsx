@@ -1,13 +1,10 @@
-import { useState, useEffect } from "react";
+import  { useState, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectFlip, Autoplay, Pagination, A11y } from "swiper/modules";
+import "/node_modules/swiper/swiper-bundle.min.css";
 import maid1 from "../../assets/camareira-1.jpg";
 import maid2 from "../../assets/camareira-2.jpg";
 import maid3 from "../../assets/camareira-3.jpg";
-import "swiper/css.css";
-import "swiper/css/pagination.css";
-import "swiper/css/autoplay.css";
-import "swiper/css/effect-flip.css";
 
 function RoomServiceArea() {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
@@ -29,8 +26,8 @@ function RoomServiceArea() {
             pagination={{ clickable: true }}
             autoplay={{ delay: 2000 }}
             effect="flip"
+            spaceBetween={30}
             flipEffect={{ slideShadows: false }}
-            spaceBetween={50}
             slidesPerView={1}
             speed={1500}
             className="max-w-[380px]"
@@ -44,21 +41,21 @@ function RoomServiceArea() {
             <SwiperSlide>
               <img
                 src={maid1}
-                className="w-full h-90"
+                className="w-full h-96 object-cover"
                 alt="Camareira da EDEN Hotels"
               />
             </SwiperSlide>
             <SwiperSlide>
               <img
                 src={maid2}
-                className="w-full h-90"
+                className="w-full h-96 object-cover"
                 alt="Camareira da EDEN Hotels"
               />
             </SwiperSlide>
             <SwiperSlide>
               <img
                 src={maid3}
-                className="w-full h-90"
+                className="w-full h-96 object-cover"
                 alt="Camareira da EDEN Hotels"
               />
             </SwiperSlide>
