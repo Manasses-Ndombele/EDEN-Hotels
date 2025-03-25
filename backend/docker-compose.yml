@@ -1,0 +1,29 @@
+version: '3.9'
+
+services:
+  db:
+    image: mysql:8.0
+    container_name: mysql_db
+    restart: always
+    env_file:
+      - .env
+    ports:
+      - "3306:3306"
+    networks:
+      - main
+
+  php:
+    build: .
+    container_name: php_backend
+    restart: always
+    env_file:
+      - .env
+    depends_on:
+      - db
+    networks:
+      - main
+    volumes:
+      - .:/var/www/html
+
+networks:
+  main
