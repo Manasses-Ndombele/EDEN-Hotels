@@ -1,10 +1,11 @@
 import BrandArea from "../BrandArea";
 import { GoStarFill } from "react-icons/go";
 import { RiDoubleQuotesL } from "react-icons/ri";
+import bg from "../../assets/bg.jpg";
 
 function DatasArea() {
   return (
-    <div id="datas-area" className="bg-color-a pt-5">
+    <div id="datas-area" className="bg-color-a pt-5 bg-cover bg-center" style={{ backgroundImage: `url(${bg})` }}>
       <div id="datas-area-container">
         <BrandArea />
         <section

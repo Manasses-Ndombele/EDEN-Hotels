@@ -4,12 +4,13 @@ import * as Yup from "yup";
 import BrandArea from "../BrandArea";
 import Input from "../Input";
 import ModalContext from "../../services/ModalContext";
+import bg from "../../assets/bg.jpg";
 
 function Footer() {
   const { setModalStatus, setModalTitle, setModalMessage } =
     useContext(ModalContext);
   return (
-    <footer className="bg-color-a p-4 libre-baskerville-regular md:mt-10">
+    <footer className="bg-color-a p-4 libre-baskerville-regular bg-cover bg-center" style={{ backgroundImage: `url(${bg})` }}>
       <BrandArea />
       <div className="md:mt-5">
         <div className="md:flex md:justify-between md:max-w-[800px] md:mx-auto">

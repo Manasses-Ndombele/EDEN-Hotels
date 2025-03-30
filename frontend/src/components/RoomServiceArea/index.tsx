@@ -1,7 +1,9 @@
-import  { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectFlip, Autoplay, Pagination, A11y } from "swiper/modules";
 import "/node_modules/swiper/swiper-bundle.min.css";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import "react-lazy-load-image-component/src/effects/black-and-white.css";
 import maid1 from "../../assets/camareira-1.jpg";
 import maid2 from "../../assets/camareira-2.jpg";
 import maid3 from "../../assets/camareira-3.jpg";
@@ -39,21 +41,21 @@ function RoomServiceArea() {
             }}
           >
             <SwiperSlide>
-              <img
+              <LazyLoadImage
                 src={maid1}
                 className="w-full h-96 object-cover"
                 alt="Camareira da EDEN Hotels"
               />
             </SwiperSlide>
             <SwiperSlide>
-              <img
+              <LazyLoadImage
                 src={maid2}
                 className="w-full h-96 object-cover"
                 alt="Camareira da EDEN Hotels"
               />
             </SwiperSlide>
             <SwiperSlide>
-              <img
+              <LazyLoadImage
                 src={maid3}
                 className="w-full h-96 object-cover"
                 alt="Camareira da EDEN Hotels"
@@ -65,19 +67,19 @@ function RoomServiceArea() {
             id="maids-container"
             className="md:flex md:items-center md:justify-center md:gap-3 lg:gap-5 xl:max-w-80%"
           >
-            <img
+            <LazyLoadImage
               src={maid1}
-              className="w-100 h-90 object-cover"
+              className="w-100 h-96 object-cover"
               alt="Camareira da EDEN Hotels"
             />
-            <img
+            <LazyLoadImage
               src={maid2}
-              className="w-100 h-90 object-cover lg:scale-105"
+              className="w-100 h-96 object-cover"
               alt="Camareira da EDEN Hotels"
             />
-            <img
+            <LazyLoadImage
               src={maid3}
-              className="w-100 h-90 object-cover"
+              className="w-100 h-96 object-cover"
               alt="Camareira da EDEN Hotels"
             />
           </div>

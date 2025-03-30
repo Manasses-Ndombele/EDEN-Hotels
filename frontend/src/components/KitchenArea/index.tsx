@@ -1,16 +1,18 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, A11y } from "swiper/modules";
 import "/node_modules/swiper/swiper-bundle.min.css";
-import chef1 from "../../assets/Chefes-1.jpeg";
-import chef2 from "../../assets/Chefes-2.jpg";
-import chef3 from "../../assets/Chefes-3.jpg";
-import chef4 from "../../assets/Chefes-4.jpg";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import "react-lazy-load-image-component/src/effects/black-and-white.css";
+import chef1 from "../../assets/Chefe-1.jpeg";
+import chef2 from "../../assets/Chefe-2.jpg";
+import chef3 from "../../assets/Chefe-3.jpg";
+import chef4 from "../../assets/Chefe-4.jpg";
 
 function KitchenArea() {
   return (
     <div id="kitchen-area" className="bg-color-e pt-7">
       <div className="md:w-[60%] mx-auto max-w-[500px]">
-        <h2 className="dm-serif-display-regular color-b text-3xl uppercase text-center">
+        <h2 className="dm-serif-display-regular color-b text-3xl uppercase text-center px-3">
           Nossa cozinha e Chefes
         </h2>
         <p className="text-center my-3 libre-baskerville-regular color-a italic px-3">
@@ -46,7 +48,7 @@ function KitchenArea() {
         >
           <SwiperSlide>
             <div className="card mb-3 max-w-[300px] mx-auto">
-              <img
+              <LazyLoadImage
                 src={chef1}
                 className="h-[20rem] w-full max-w-[400px] object-cover object-top"
                 alt="Chefe de cozinha da EDEN Hotels"
@@ -72,7 +74,7 @@ function KitchenArea() {
           </SwiperSlide>
           <SwiperSlide>
             <div className="card mb-3 max-w-[300px] mx-auto">
-              <img
+              <LazyLoadImage
                 src={chef2}
                 className="h-[20rem] w-full max-w-[400px] object-cover object-top"
                 alt="Chefe de cozinha da EDEN Hotels"
@@ -98,7 +100,7 @@ function KitchenArea() {
           </SwiperSlide>
           <SwiperSlide>
             <div className="card mb-3 max-w-[300px] mx-auto">
-              <img
+              <LazyLoadImage
                 src={chef3}
                 className="h-[20rem] w-full max-w-[400px] object-cover object-top"
                 alt="Chefe de cozinha da EDEN Hotels"
@@ -124,7 +126,7 @@ function KitchenArea() {
           </SwiperSlide>
           <SwiperSlide>
             <div className="card mb-3 max-w-[300px] mx-auto">
-              <img
+              <LazyLoadImage
                 src={chef4}
                 className="h-[20rem] w-full max-w-[400px] object-cover object-top"
                 alt="Chefe de cozinha da EDEN Hotels"

@@ -85,7 +85,6 @@ textarea.form-field:focus {
   outline: none !important;
   border-bottom: 1px solid #ff533d;
 }
-
 textarea.form-field {
   height: 8rem;
 }
