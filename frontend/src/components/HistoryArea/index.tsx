@@ -12,14 +12,19 @@ function HistoryArea() {
         <h2 className="dm-serif-display-regular uppercase text-2xl lg:text-3xl color-b font-bold">
           Nossa história
         </h2>
-        <p className="libre-baskerville-regular color-a italic mt-2 mb-5">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta
-          assumenda ipsum quo harum maxime necessitatibus esse voluptas
-          doloremque ullam fuga unde temporibus, eaque dicta earum ratione
-          voluptatibus minima error quam. Lorem, ipsum dolor sit amet
-          consectetur adipisicing elit. Dolorum, atque cum? Quasi, atque nisi
-          explicabo cumque nostrum temporibus nemo assumenda quidem commodi
-          corrupti, omnis quae perferendis, nam neque rerum aliquid.
+        <p className="libre-baskerville-regular color-a italic mt-2 mb-5 text-justify">
+          Em 2005, o empreendedor Lorenzo DeMarco transformou um antigo palácio
+          em Milão no primeiro EDEN Hotels, combinando herança arquitetônica com
+          tecnologia de ponta. Sua visão? Oferecer luxo experiencial — onde
+          design inteligente, sustentabilidade e serviço hiperpersonalizado
+          redefiniram a hospitalidade. Em menos de uma década, o EDEN tornou-se
+          sinônimo de inovação, atraindo viajantes globais.
+        </p>
+        <p className="libre-baskerville-regular color-a italic mt-2 mb-5 text-justify">
+          <strong className="block">Domínio Continental</strong> Com investimentos audaciosos, o EDEN expandiu para
+          capitais estratégicas, adquirindo propriedades icônicas. Hoje, lidera
+          o mercado hoteleiro europeu, mantendo seu DNA: vanguarda discreta e
+          conexão autêntica com cada destino.
         </p>
       </div>
       <LazyLoadImage

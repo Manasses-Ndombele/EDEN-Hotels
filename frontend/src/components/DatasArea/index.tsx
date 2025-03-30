@@ -5,7 +5,11 @@ import bg from "../../assets/bg.jpg";
 
 function DatasArea() {
   return (
-    <div id="datas-area" className="bg-color-a pt-5 bg-cover bg-center" style={{ backgroundImage: `url(${bg})` }}>
+    <div
+      id="datas-area"
+      className="bg-color-a pt-5 bg-cover bg-center"
+      style={{ backgroundImage: `url(${bg})` }}
+    >
       <div id="datas-area-container">
         <BrandArea />
         <section
@@ -18,13 +22,17 @@ function DatasArea() {
           <GoStarFill className="text-amber-300 text-xl" />
           <GoStarFill className="text-amber-300 text-xl" />
         </section>
-        <div id="feedback-description" className="color-c px-5 py-4 mx-auto max-w-[500px] md:w-[60%]">
+        <div
+          id="feedback-description"
+          className="color-c px-5 py-4 mx-auto max-w-[500px] md:w-[60%]"
+        >
           <RiDoubleQuotesL className="inline text-3xl" />
           <span className="text-base libre-baskerville-regular">
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cum
-            recusandae ex non a. Nostrum molestiae velit quasi eaque, inventore
-            iste nobis in cupiditate temporibus autem suscipit, ipsa alias
-            facere vel. - <strong>Chandler Moore</strong>
+            O EDEN Hotels redefine o luxo europeu com sua combinação
+            impecável de elegância clássica e contemporânea. Cada detalhe – do
+            atendimento discreto aos acabamentos em mármore – exala
+            sofisticação. Uma experiência que supera expectativas. -{" "}
+            <strong>Sir Reginald Whitmore</strong>
           </span>
         </div>
         <div

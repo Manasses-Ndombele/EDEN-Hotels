@@ -16,10 +16,11 @@ function LeisureArea() {
           Atividades de lazer e lindas vistas
         </h2>
         <p className="libre-baskerville-regular italic color-a text-center px-3 py-2 mb-5">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla rem
-          dolores modi voluptatem tempora eum molestias cumque laborum neque
-          possimus dolore consequuntur accusamus suscipit, soluta iusto,
-          necessitatibus vel quod porro.
+          No EDEN Hotels, o lazer é uma arte. Desfrute de momentos de puro
+          êxtase entre piscinas serenas, terapias revitalizantes e vistas
+          deslumbrantes — seja sobre florestas ancestrais, o ritmo urbano ou o
+          infinito azul do mar. Cada detalhe foi concebido para elevar seus
+          sentidos.
         </p>
       </div>
       <div id="leisure-area-container">

@@ -16,8 +16,10 @@ function KitchenArea() {
           Nossa cozinha e Chefes
         </h2>
         <p className="text-center my-3 libre-baskerville-regular color-a italic px-3">
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborum
-          incidunt dolores deserunt dolore.
+          A cozinha do EDEN Hotels é um templo da gastronomia refinada, onde
+          pratos contemporâneos ganham vida com ingredientes excepcionais e
+          técnicas precisas, tudo servido em meio a uma atmosfera de luxo
+          discreto.
         </p>
       </div>
       <div
@@ -67,8 +69,8 @@ function KitchenArea() {
                 </svg>
               </div>
               <p className="translate-y-[-50px] md:translate-y-[-60px] bg-color-c p-3 italic libre-baskerville-regular color-e">
-                <strong>Olívio Mussolini</strong> - Lorem ipsum dolor sit amet
-                consectetur adipisicing elit. Dolor ea, maiores.
+                <strong>Chef Élodie Laurent</strong> - Prometo transformar
+                ingredientes nobres em emoções memoráveis.
               </p>
             </div>
           </SwiperSlide>
@@ -93,8 +95,8 @@ function KitchenArea() {
                 </svg>
               </div>
               <p className="translate-y-[-50px] md:translate-y-[-60px] bg-color-c p-3 italic libre-baskerville-regular color-e">
-                <strong>Arménio Rosário</strong> - Lorem ipsum dolor sit amet
-                consectetur adipisicing elit. Dolor ea, maiores magni
+                <strong>Chef Maximilien von Alderberg</strong> - Minha cozinha é
+                uma sinfonia de sabores raros e precisão absoluta.
               </p>
             </div>
           </SwiperSlide>
@@ -119,8 +121,8 @@ function KitchenArea() {
                 </svg>
               </div>
               <p className="translate-y-[-50px] md:translate-y-[-60px] bg-color-c p-3 italic libre-baskerville-regular color-e">
-                <strong>Garcia Óscar</strong> - Lorem ipsum dolor sit amet
-                consectetur adipisicing elit. Dolor ea, maiores magni
+                <strong>Chef Isabella Montebianco</strong> - Cada prato conta
+                uma história de tradição reinventada com paixão.
               </p>
             </div>
           </SwiperSlide>
@@ -145,8 +147,8 @@ function KitchenArea() {
                 </svg>
               </div>
               <p className="translate-y-[-50px] md:translate-y-[-60px] bg-color-c p-3 italic libre-baskerville-regular color-e">
-                <strong>Romário Júnior</strong> - Lorem ipsum dolor sit amet
-                consectetur adipisicing elit. Dolor ea, maiores.
+                <strong>Chef Lucien Duvall</strong> - Surpreender o paladar e vivenciar o sabor é a
+                minha única regra.
               </p>
             </div>
           </SwiperSlide>

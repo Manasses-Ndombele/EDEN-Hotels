@@ -15,8 +15,8 @@ function LocationsArea() {
           Locais
         </h2>
         <p className="text-center text-base px-2 libre-baskerville-regular">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam id
-          cumque, aliquam
+          Estamos localizados em qualquer paísm europeu que você já sonhou em
+          visitar prontos para realizar os teus sonhos!
         </p>
       </div>
       <div
@@ -31,7 +31,7 @@ function LocationsArea() {
               alt="EDEN Hotel em Paris"
             />
             <span className="absolute bottom-0 left-0 h-25 uppercase libre-baskerville-regular color-e p-2 font-bold flex items-end text-lg linear-gradient-black w-full">
-              Paris - França
+              França - Paris
             </span>
           </div>
         </div>

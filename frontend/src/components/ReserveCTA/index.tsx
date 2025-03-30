@@ -7,8 +7,9 @@ function ReserveCTA() {
         Reserve ainda hoje!
       </h2>
       <p className="color-a libre-baskerville-regular text-lg italic md:w-[80%] md:text-center">
-        Estamos sempre prontos para te receber! Lorem ipsum dolor sit, amet
-        consectetur adipisicing elit. At voluptates iste
+        Descubra o luxo que merece. No EDEN Hotels, suas experiências mais
+        refinadas aguardam – reserve agora e desfrute de uma estadia
+        inesquecível. Estamos sempre prontos para recebê-lo.
       </p>
       <Link to="/reservas">
         <button
