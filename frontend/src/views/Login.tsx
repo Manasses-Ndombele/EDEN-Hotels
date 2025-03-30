@@ -21,7 +21,7 @@ function Login() {
   }, []);
 
   return (
-    <main className="bg-color-e h-[100vh] max-h-[140vh] mb-30">
+    <main className="bg-color-e min-h-[100vh] pb-30 bg-color-d">
       <div className="bg-color-a p-3">
         <BrandArea />
       </div>

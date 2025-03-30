@@ -137,7 +137,7 @@ function ReservesTable() {
                 <td className="border-1 p-2">
                   <button
                     type="button"
-                    className="color-c cursor-pointer w-full"
+                    className="color-c cursor-pointer w-full flex justify-center"
                     onClick={() => {
                       deleteReserve(reserve["id"]);
                     }}

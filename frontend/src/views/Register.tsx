@@ -20,7 +20,7 @@ function Register() {
   }, [loggedIn, user, navigate]);
 
   return (
-    <main className="bg-color-e h-[100vh] max-h-[140vh] mb-30">
+    <main className="bg-color-e min-h-[100vh] pb-30">
       <div className="bg-color-a p-3">
         <BrandArea />
       </div>

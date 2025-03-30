@@ -13,7 +13,7 @@ function MainIntroArea() {
       >
         <div
           id="main-intro-area"
-          className="p-3 max-w-[500px] md:w-[70%] mx-auto"
+          className="p-3 max-w-[700px] md:w-[70%] mx-auto"
         >
           <h1 className="dm-serif-display-regular text-4xl uppercase color-d text-center">
             Um Refúgio de Elegância no Coração da Europa!

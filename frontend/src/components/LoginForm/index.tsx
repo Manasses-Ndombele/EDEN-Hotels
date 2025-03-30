@@ -57,7 +57,7 @@ function LoginForm() {
           });
       }}
     >
-      <Form className="px-3 flex flex-col gap-2 mt-3 md:max-w-[60%] mx-auto max-w-[500px]">
+      <Form className="px-3 flex flex-col gap-2 mt-3 mx-auto max-w-[500px]">
         <Input
           type="email"
           label="Email"
