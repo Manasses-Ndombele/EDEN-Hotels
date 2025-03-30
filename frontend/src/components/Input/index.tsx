@@ -25,7 +25,7 @@ function setField({
     const options = selectOptions ? [placeholder, ...selectOptions] : [placeholder];
 
     return (
-      <Field type={type} id={id} name={name} as="select" className="italic border-b-[1px] libre-baskerville-regular">
+      <Field type={type} id={id} name={name} as="select" className="italic border-b-[1px] libre-baskerville-regular form-field">
         {options.map((option, index) =>
           index === 0 ? (
             <option key={index} value="" disabled>
@@ -47,7 +47,7 @@ function setField({
         id={id}
         name={name}
         as={typeField}
-        className="italic border-b-[1px] libre-baskerville-regular"
+        className="italic border-b-[1px] libre-baskerville-regular p-2 transition-all ease-in duration-300 form-field resize-none"
       />
     );
   }

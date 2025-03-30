@@ -1,32 +1,45 @@
 import { useContext } from "react";
 import { Formik, Form } from "formik";
+import * as Yup from "yup";
 import BrandArea from "../BrandArea";
 import Input from "../Input";
 import ModalContext from "../../services/ModalContext";
 
 function Footer() {
-  const { setModalStatus, setModalTitle, setModalMessage } = useContext(ModalContext);
+  const { setModalStatus, setModalTitle, setModalMessage } =
+    useContext(ModalContext);
   return (
     <footer className="bg-color-a p-4 libre-baskerville-regular md:mt-10">
       <BrandArea />
       <div className="md:mt-5">
         <div className="md:flex md:justify-between md:max-w-[800px] md:mx-auto">
-          <div id="contacts-area" className="text-center mt-5 color-c md:text-left">
+          <div
+            id="contacts-area"
+            className="text-center mt-5 color-c md:text-left"
+          >
             <p className="mb-3 text-lg">Tel: (+55) 923 475 898</p>
             <p className="mb-3 text-lg">Email: info@edenhotels.service</p>
             <p className="mb-3 text-lg">Local: Europa</p>
           </div>
-          <div id="newsletter-form-area" className="color-e max-w-[350px] mx-auto">
+          <div
+            id="newsletter-form-area"
+            className="color-e max-w-[350px] mx-auto"
+          >
             <p className="mb-3 text-lg font-bold">
               Se inscreva na nossa newsletter
             </p>
             <Formik
-              initialValues={{ email: "" }}
+              initialValues={{ newsletterEmail: "" }}
+              validationSchema={Yup.object().shape({
+                newsletterEmail: Yup.string()
+                  .email("Email inválido!")
+                  .required("Este campo é obrigatório"),
+              })}
               onSubmit={(values, { resetForm, setSubmitting }) => {
                 setSubmitting(true);
                 setModalTitle("Agredecemos imenso!");
                 setModalMessage(
-                  `Seja bem vindo a nossa newsletter onde você será impactado com contéudos que exclusivos sobre o nosso hotel, sempre dizemos não ao spam na nossa newsletter vamos informar apenas atualizações sobre o hotel!\n\n${values.email}`
+                  `Seja bem vindo a nossa newsletter onde você será impactado com contéudos que exclusivos sobre o nosso hotel, sempre dizemos não ao spam na nossa newsletter vamos informar apenas atualizações sobre o hotel!\n\n${values.newsletterEmail}`
                 );
 
                 resetForm();
@@ -40,7 +53,7 @@ function Footer() {
                   label="Email"
                   placeholder="Seu melhor email"
                   id="newsletter-email-field"
-                  name="newsletter-email"
+                  name="newsletterEmail"
                   typeField="input"
                 />
                 <button

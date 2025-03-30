@@ -5,7 +5,7 @@ import Footer from "../components/Footer";
 function Reserves() {
   return (
     <>
-      <Header />
+      <Header active="reserves" />
       <main className="px-6 mb-8 max-w-[600px] md:max-w-[100%]">
         <div className="max-w-[500px] md:mx-auto">
           <h1 className="uppercase text-3xl dm-serif-display-regular color-b py-4">Reserve ainda hoje!</h1>

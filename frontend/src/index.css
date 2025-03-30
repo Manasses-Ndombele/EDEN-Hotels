@@ -1,15 +1,12 @@
 @import "tailwindcss";
-
 .libre-baskerville-regular {
   font-family: "Libre Baskerville", serif;
 }
-
 .dm-serif-display-regular {
   font-family: "DM Serif Display", serif;
   font-weight: 400;
   font-style: normal;
 }
-
 .color-a {
   color: #0f1626;
 }
@@ -49,42 +46,46 @@
 .bg-color-e {
   background-color: #f5f5f5;
 }
-
 .border-color-a {
   border-color: #f5f5f574;
 }
-
 .border-color-b {
   border-color: #ab987a;
 }
-
-.shadow-min {
-  text-shadow: 0px 0px 2px #ab987a85;
-}
-
 span.swiper-pagination-bullet {
   background-color: #ff533d;
 }
-
 div.swiper-button-next::after,
 div.swiper-button-prev::after {
   color: #ff533d;
 }
-
 .linear-gradient-black {
   background-image: linear-gradient(to top, #0f1626, transparent);
 }
-
-input#newsletter-email-field {
-  padding: 10px;
-}
-
 div#modal-overlay.deactivated,
 div#modal-user-overlay.deactivated {
   display: none;
 }
-
 div#modal-overlay.activated,
 div#modal-user-overlay.activated {
   display: flex;
+}
+nav#main-nav > a:hover {
+  color: #ff533d;
+}
+nav#main-nav > a.active::after {
+  content: "";
+  display: block;
+  background-color: #efefef;
+  width: 30%;
+  height: 2px;
+}
+input.form-field:focus,
+textarea.form-field:focus {
+  outline: none !important;
+  border-bottom: 1px solid #ff533d;
+}
+
+textarea.form-field {
+  height: 8rem;
 }

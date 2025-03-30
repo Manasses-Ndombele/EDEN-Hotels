@@ -16,7 +16,7 @@ function RoomServiceArea() {
   }, []);
   return (
     <div id="room-service-area" className="bg-color-e p-7">
-      <h2 className="dm-serif-display-regular text-3xl text-center uppercase color-b shadow-min mb-5">
+      <h2 className="dm-serif-display-regular text-3xl text-center uppercase color-b mb-5">
         Serviço de quartos
       </h2>
       <div id="maids-container-slides">

@@ -6,7 +6,7 @@ import Footer from "../components/Footer";
 function HotelChain() {
   return (
     <>
-      <Header />
+      <Header active="hotel-chain" />
       <main className="bg-color-e py-6">
         <div className="md:w-[70%] mx-auto max-w-[600px]">
           <h1 className="px-2 text-center text-3xl color-b uppercase dm-serif-display-regular">A maior rede de hotéis da Europa!</h1>

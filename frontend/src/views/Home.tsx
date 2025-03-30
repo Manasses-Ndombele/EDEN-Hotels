@@ -9,7 +9,7 @@ import Footer from "../components/Footer";
 function Home() {
   return (
     <>
-      <Header />
+      <Header active="home" />
       <main>
         <MainIntroArea />
         <DatasArea />

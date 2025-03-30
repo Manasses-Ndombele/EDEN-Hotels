@@ -1,18 +1,16 @@
 import Header from "../components/Header";
+import HotelVideo from "../components/HotelVideo";
 import HistoryArea from "../components/HistoryArea";
 import DatasArea from "../components/DatasArea";
 import ReserveCTA from "../components/ReserveCTA";
 import Footer from "../components/Footer";
-import HotelVideo from "../assets/hotelvideo.mp4"
 
 function About() {
   return (
     <>
-      <Header />
+      <Header active="about" />
       <main className="bg-color-e">
-        <video autoPlay={true} muted={true} controls={true} className="max-h-[300px] w-full bg-color-ba" >
-          <source src={HotelVideo} type="video/mp4" />
-        </video>
+        <HotelVideo />
         <HistoryArea />
         <DatasArea />
         <ReserveCTA />
