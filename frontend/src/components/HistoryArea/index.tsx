@@ -6,10 +6,10 @@ function HistoryArea() {
   return (
     <div
       id="history-area"
-      className="p-5 md:flex md:items-start md:justify-between max-w-[600px] lg:max-w-[900px] lg:justify-around lg:gap-4 lg:my-5 lg:items-center mx-auto"
+      className="p-5 md:flex md:items-start md:justify-between max-w-[900px] lg:justify-around lg:gap-4 lg:my-5 lg:items-center mx-auto"
     >
-      <div className="md:w-[50%]">
-        <h2 className="dm-serif-display-regular uppercase text-2xl lg:text-3xl color-b font-bold">
+      <div className="md:max-w-[400px]">
+        <h2 className="dm-serif-display-regular uppercase text-3xl lg:text-3xl color-b font-bold">
           Nossa história
         </h2>
         <p className="libre-baskerville-regular color-a italic mt-2 mb-5 text-justify">
@@ -31,7 +31,7 @@ function HistoryArea() {
         src={founderPhoto}
         alt="Foto do fundador da EDEN Hotels"
         effect="black-and-white"
-        className="h-[25rem] object-cover w-full md:w-auto object-center"
+        className="h-[25rem] object-cover w-[300px] object-center"
       />
     </div>
   );

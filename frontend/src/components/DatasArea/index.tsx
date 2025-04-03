@@ -1,17 +1,17 @@
-import BrandArea from "../BrandArea";
+import LogoArea from "../LogoArea";
 import { GoStarFill } from "react-icons/go";
 import { RiDoubleQuotesL } from "react-icons/ri";
-import bg from "../../assets/bg.jpg";
+import bg from "../../assets/bg-datas.jpg";
 
 function DatasArea() {
   return (
     <div
       id="datas-area"
-      className="bg-color-a pt-5 bg-cover bg-center"
+      className="bg-color-a py-10 bg-cover bg-center"
       style={{ backgroundImage: `url(${bg})` }}
     >
       <div id="datas-area-container">
-        <BrandArea />
+        <LogoArea />
         <section
           id="feedback-stars"
           className="flex items-center gap-1 mx-auto w-min"
@@ -28,10 +28,10 @@ function DatasArea() {
         >
           <RiDoubleQuotesL className="inline text-3xl" />
           <span className="text-base libre-baskerville-regular">
-            O EDEN Hotels redefine o luxo europeu com sua combinação
-            impecável de elegância clássica e contemporânea. Cada detalhe – do
-            atendimento discreto aos acabamentos em mármore – exala
-            sofisticação. Uma experiência que supera expectativas. -{" "}
+            O EDEN Hotels redefine o luxo europeu com sua combinação impecável
+            de elegância clássica e contemporânea. Cada detalhe – do atendimento
+            discreto aos acabamentos em mármore – exala sofisticação. Uma
+            experiência que supera expectativas. -{" "}
             <strong>Sir Reginald Whitmore</strong>
           </span>
         </div>
@@ -69,13 +69,6 @@ function DatasArea() {
           </section>
         </div>
       </div>
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 315">
-        <path
-          fill="#f5f5f5"
-          fillOpacity="1"
-          d="M0,224L48,197.3C96,171,192,117,288,133.3C384,149,480,235,576,256C672,277,768,235,864,213.3C960,192,1056,192,1152,181.3C1248,171,1344,149,1392,138.7L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
-        ></path>
-      </svg>
     </div>
   );
 }

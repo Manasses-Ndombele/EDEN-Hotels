@@ -1,8 +1,7 @@
 import Header from "../components/Header";
 import HotelVideo from "../components/HotelVideo";
 import HistoryArea from "../components/HistoryArea";
-import DatasArea from "../components/DatasArea";
-import ReserveCTA from "../components/ReserveCTA";
+import BrandingArea from "../components/BrandingArea";
 import Footer from "../components/Footer";
 
 function About() {
@@ -12,10 +11,9 @@ function About() {
       <main className="bg-color-e">
         <HotelVideo />
         <HistoryArea />
-        <DatasArea />
-        <ReserveCTA />
+        <BrandingArea />
       </main>
-      <Footer />
+      <Footer aboutPage={true} />
     </>
   );
 }

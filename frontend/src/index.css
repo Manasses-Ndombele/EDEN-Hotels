@@ -35,7 +35,7 @@
   background-color: #ab987a;
 }
 .bg-color-ba {
-  background-color: #ab987a85;
+  background-color: #ab987ab0;
 }
 .bg-color-c {
   background-color: #ff533d;
@@ -87,4 +87,7 @@ textarea.form-field:focus {
 }
 textarea.form-field {
   height: 8rem;
+}
+.border-big {
+  border: 4px solid #ab987a;
 }

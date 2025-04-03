@@ -1,4 +1,5 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { useEffect } from "react";
+import { BrowserRouter, Route, Routes, useNavigate } from "react-router-dom";
 import Home from "../views/Home";
 import Reserves from "../views/Reserves";
 import About from "../views/About";
@@ -8,6 +9,17 @@ import Login from "../views/Login";
 import Register from "../views/Register";
 import Logout from "../views/Logout";
 import ProtectedLayout from "./ProtectedLayout";
+
+function AdminRedirect() {
+  const navigate = useNavigate();
+  useEffect(() => {
+    navigate("/admin/dashboard");
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  return <div>Carregando...</div>;
+}
 
 function Router() {
   return (
@@ -22,6 +34,7 @@ function Router() {
           <Route path="/admin/login" element={<Login />} />
           <Route path="/admin/register" element={<Register />} />
           <Route path="/admin/logout" element={<Logout />} />
+          <Route path="/admin" element={<AdminRedirect />} />
         </Route>
       </Routes>
     </BrowserRouter>

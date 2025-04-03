@@ -14,7 +14,7 @@ function ReserveCTA() {
       <Link to="/reservas">
         <button
           type="button"
-          className="w-full max-w-[200px] md:w-min md:px-10 p-3 color-d libre-baskerville-regular uppercase font-bold tracking-wide focus:tracking-tight text-lg bg-color-b cursor-pointer mt-3 border-r-4 border-b-4 border-color-a focus:border-0 transition-all ease-in duration-200"
+          className="w-full max-w-[200px] md:w-min md:px-10 p-3 color-d libre-baskerville-regular uppercase font-bold tracking-wide focus:tracking-tight text-lg bg-color-b cursor-pointer mt-5 border-r-4 border-b-4 border-color-a focus:border-0 transition-all ease-in duration-200"
         >
           Reservar
         </button>

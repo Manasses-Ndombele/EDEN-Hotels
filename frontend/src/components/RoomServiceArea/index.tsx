@@ -17,7 +17,7 @@ function RoomServiceArea() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
   return (
-    <div id="room-service-area" className="bg-color-e p-7">
+    <div id="room-service-area" className="bg-color-e p-7 pt-14">
       <h2 className="dm-serif-display-regular text-3xl text-center uppercase color-b mb-5">
         Serviço de quartos
       </h2>

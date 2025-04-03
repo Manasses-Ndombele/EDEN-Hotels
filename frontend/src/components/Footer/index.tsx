@@ -1,17 +1,26 @@
 import { useContext } from "react";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
-import BrandArea from "../BrandArea";
+import LogoArea from "../LogoArea";
 import Input from "../Input";
 import ModalContext from "../../services/ModalContext";
-import bg from "../../assets/bg.jpg";
+import bg from "../../assets/bg-footer.jpg";
 
-function Footer() {
+interface Props {
+  aboutPage?: boolean;
+}
+
+function Footer({ aboutPage = false }: Props) {
   const { setModalStatus, setModalTitle, setModalMessage } =
     useContext(ModalContext);
   return (
-    <footer className="bg-color-a p-4 libre-baskerville-regular bg-cover bg-center" style={{ backgroundImage: `url(${bg})` }}>
-      <BrandArea />
+    <footer
+      className={`${
+        aboutPage ? "pt-20" : ""
+      } bg-color-a p-4 libre-baskerville-regular bg-cover bg-center`}
+      style={{ backgroundImage: `url(${bg})` }}
+    >
+      <LogoArea />
       <div className="md:mt-5">
         <div className="md:flex md:justify-between md:max-w-[800px] md:mx-auto">
           <div

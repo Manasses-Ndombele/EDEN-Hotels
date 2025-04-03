@@ -1,6 +1,6 @@
 import { useContext, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import BrandArea from "../components/BrandArea";
+import LogoArea from "../components/LogoArea";
 import RegisterForm from "../components/RegisterForm";
 import UserContext from "../services/UserContext";
 
@@ -22,14 +22,24 @@ function Register() {
   return (
     <main className="bg-color-e min-h-[100vh] pb-30">
       <div className="bg-color-a p-3">
-        <BrandArea />
+        <LogoArea />
       </div>
       <div className="my-3 px-3 md:w-[80%] mx-auto max-w-[500px]">
-        <h2 className="dm-serif-display-regular text-3xl color-b uppercase text-center">Registro</h2>
-        <p className="libre-baskerville-regular text-lg color-a italic md:text-center">Seja bem vindo insira os seus dados de usuário de uma conta autorizada para acessar a área administrativa do EDEN Hotels.</p>
+        <h2 className="dm-serif-display-regular text-3xl color-b uppercase text-center">
+          Registro
+        </h2>
+        <p className="libre-baskerville-regular text-lg color-a italic md:text-center">
+          Seja bem vindo insira os seus dados de usuário de uma conta autorizada
+          para acessar a área administrativa do EDEN Hotels.
+        </p>
       </div>
       <RegisterForm />
-      <Link to="/admin/login" className="text-center my-4 w-full block color-a font-bold libre-baskerville-regular">Tem uma conta? Entrar</Link>
+      <Link
+        to="/admin/login"
+        className="text-center my-4 w-full block color-a font-bold libre-baskerville-regular"
+      >
+        Tem uma conta? Entrar
+      </Link>
     </main>
   );
 }
