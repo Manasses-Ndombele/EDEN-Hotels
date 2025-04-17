@@ -3,14 +3,15 @@
     require_once __DIR__ . "/../config/db.php";
 
     class Reserves {
-        public function create(string $client_name, string $phonenumber, string $hotel_country, string $start_date, string $end_date, string $message = null) {
+        public function create(string $client_name, string $phonenumber, string $hotel_country, string $start_date, string $end_date, string $message = "NADA INFORMADO") {
             $db = new \Database();
             $stmt = $db->conn->prepare("INSERT INTO `Reserves`
-                (`client_name`, `phonenumber`, `hotel_country`, `start_date`, `end_date`, `message`)
-                VALUES (?, ?, ?, ?, ?, ?)
+                (`client_name`, `phonenumber`, `hotel_country`, `start_date`, `end_date`, `message`, `status`)
+                VALUES (?, ?, ?, ?, ?, ?, ?)
             ");
 
-            $stmt->bind_param("ssssss", $client_name, $phonenumber, $hotel_country, $start_date, $end_date, $message);
+            $default_status = "RESERVADO";
+            $stmt->bind_param("sssssss", $client_name, $phonenumber, $hotel_country, $start_date, $end_date, $message, $default_status);
             if ($stmt->execute()) {
                 $datas = [
                     "success" => true,
