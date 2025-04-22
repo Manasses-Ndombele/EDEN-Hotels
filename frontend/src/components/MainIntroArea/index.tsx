@@ -4,7 +4,7 @@ function MainIntroArea() {
   return (
     <div
       id="intro-overlay"
-      className="bg-cover bg-center md:bg-fixed h-[25rem] lg:h-[30rem]"
+      className="bg-cover bg-center md:bg-fixed h-[90vh]"
       style={{ backgroundImage: `url(${HotelHome1})` }}
     >
       <div
